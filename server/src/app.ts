@@ -1,14 +1,28 @@
 import express, { Express, Request, Response } from 'express';
+import { createPoll } from './db/polls';
 
 const app: Express = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-app.post("/poll", (req: Request, res: Response) => {
-	const test = req.body.test;
+app.post("/poll", async (req: Request, res: Response) => {
+	try {
+		const { question } = req.body;
 
-	res.status(200).send(`Reponse ${test}`);
+		if (!question) {
+			return res.sendStatus(400);
+		}
+
+		const poll = await createPoll({
+			question
+		});
+
+		return res.status(201).json(poll).end();
+	} catch (error) {
+		console.error(error);
+		return res.sendStatus(400);
+	}
 });
 
 app.listen(PORT, () => {
