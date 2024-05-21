@@ -7,11 +7,17 @@ A simple polling app that allows users to create and participate in polls
 # navigate to the server directory
 $ cd server
 
+# generate database migration for PostgreSQL
+$ npm run db:generate
+
+# apply database migration
+$ (ENV_VAR) npm run db:migrate
+
 # compile the TypeScript code
 $ npm run build
 
 # run the server
-$ npm run start
+$ (ENV_VAR) npm run start
 ```
 ## Enviornment Varialbes
 ### Server

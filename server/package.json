@@ -1,13 +1,13 @@
 {
   "name": "node-react-polling-app",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple polling app that allows users to create and participate in polls",
   "main": "app.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/app.js",
     "db:generate": "drizzle-kit generate --config=./src/drizzle.config.ts",
-    "db:migrate": "drizzle-kit migrate ./src/db/migrate.ts",
+    "db:migrate": "drizzle-kit migrate --config=./src/drizzle.config.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
