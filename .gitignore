@@ -148,3 +148,6 @@ dist
 
 # Ignore all zip files
 *.zip
+
+# Drizzle Migrations
+*migrations/

@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from 'express';
-import { createPoll } from './db/polls';
+import { addPoll } from './handlers/polls/addPolls';
 
 const app: Express = express();
 app.use(express.json());
@@ -14,11 +14,9 @@ app.post("/poll", async (req: Request, res: Response) => {
 			return res.sendStatus(400);
 		}
 
-		const poll = await createPoll({
-			question
-		});
+		const poll = await addPoll(question)
 
-		return res.status(201).json(poll).end();
+		return res.status(201).json(poll);
 	} catch (error) {
 		console.error(error);
 		return res.sendStatus(400);
