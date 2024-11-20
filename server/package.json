@@ -1,6 +1,6 @@
 {
   "name": "node-react-polling-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple polling app that allows users to create and participate in polls",
   "main": "app.js",
   "scripts": {
