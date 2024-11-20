@@ -5,3 +5,9 @@ export const polls = pgTable('polls', {
 	id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
 	question: text('question').notNull()
 });
+
+export const options = pgTable('options', {
+	id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
+	option: text('option').notNull(),
+	pollId: text('poll_id').references(() => polls.id, {onDelete: 'cascade'}).notNull()
+});
