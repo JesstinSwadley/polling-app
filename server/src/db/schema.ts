@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { pgTable, serial, text, uuid } from 'drizzle-orm/pg-core';
+import { integer, pgTable, text, uuid } from 'drizzle-orm/pg-core';
 
 export const polls = pgTable('polls', {
 	id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
@@ -14,7 +14,7 @@ export const options = pgTable('options', {
 
 export const results = pgTable('results', {
 	id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
-	total: serial('total'),
+	total: integer('total'),
 	optionId: uuid('option').references(() => options.id, {onDelete: 'cascade'}).notNull(),
 	pollId: uuid('poll_id').references(() => polls.id, {onDelete: 'cascade'}).notNull()
 });

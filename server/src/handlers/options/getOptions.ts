@@ -4,7 +4,10 @@ import { options } from "../../db/schema";
 
 export const getAllPollOptions = async (pollID: any) => {
 	const pollOptions = await db
-						.select()
+						.select({
+							id: options.id,
+							option: options.option
+						})
 						.from(options)
 						.where(eq(options.pollId, pollID))
 
