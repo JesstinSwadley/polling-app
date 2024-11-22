@@ -37,7 +37,7 @@ app.get("/all-polls", async(req: Request, res: Response) => {
 
 app.get("/single-poll", async(req: Request, res: Response) => {
 	try {
-		const { pollID } = req.body;
+		const { pollID } = req.query
 
 		if (!pollID) {
 			return res.sendStatus(400);

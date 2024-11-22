@@ -11,3 +11,10 @@ export const options = pgTable('options', {
 	option: text('option').notNull(),
 	pollId: uuid('poll_id').references(() => polls.id, {onDelete: 'cascade'}).notNull()
 });
+
+export const results = pgTable('results', {
+	id: uuid('id').default(sql`gen_random_uuid()`).primaryKey(),
+	total: serial('total'),
+	optionId: uuid('option').references(() => options.id, {onDelete: 'cascade'}).notNull(),
+	pollId: uuid('poll_id').references(() => polls.id, {onDelete: 'cascade'}).notNull()
+});
