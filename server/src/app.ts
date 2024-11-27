@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from 'express';
-import { addPoll } from './handlers/polls/addPolls';
-import { getAllPolls, getPollsById } from './handlers/polls/getPolls';
+import { addPoll } from './services/polls/addPolls';
+import { getAllPolls, getPollsById } from './services/polls/getPolls';
 
 const app: Express = express();
 app.use(express.json());
