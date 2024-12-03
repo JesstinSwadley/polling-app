@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { addPoll } from "../services/polls/addPolls";
 import { getAllPolls, getPollsById } from "../services/polls/getPolls";
 import { updatePollById } from "../services/polls/updatePolls";
+import { deletePollById } from "../services/polls/deletePolls";
 
 export const addPollController = async (req: Request, res: Response) => {
 	try {
@@ -59,6 +60,23 @@ export const updatePollByIdController = async (req: Request, res: Response) => {
 		const poll = await updatePollById(pollID, updatedQuestion)
 
 		return res.status(200).send("Poll was updated");
+	} catch (error) {
+		console.error(error);
+		return res.sendStatus(400);
+	}
+}
+
+export const deletePollByIdController = async (req: Request, res: Response) => {
+	try {
+		const { pollID } = req.query;
+
+		if (!pollID) {
+			return res.sendStatus(400);
+		}
+
+		const poll = await deletePollById(pollID);
+
+		return res.status(200).send("Poll was deleted");
 	} catch (error) {
 		console.error(error);
 		return res.sendStatus(400);
