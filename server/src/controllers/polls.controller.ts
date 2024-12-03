@@ -58,7 +58,7 @@ export const updatePollByIdController = async (req: Request, res: Response) => {
 
 		const poll = await updatePollById(pollID, updatedQuestion)
 
-		return res.status(200).send("Poll was created");
+		return res.status(200).send("Poll was updated");
 	} catch (error) {
 		console.error(error);
 		return res.sendStatus(400);
