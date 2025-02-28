@@ -4,6 +4,8 @@
   "description": "A simple polling app that allows users to create, manage and participate in polls",
   "main": "app.js",
   "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/JesstinSwadley/polling-app/issues"
   },
-  "homepage": "https://github.com/JesstinSwadley/polling-app#readme"
+  "homepage": "https://github.com/JesstinSwadley/polling-app#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5"
+  }
 }
