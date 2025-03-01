@@ -13,6 +13,25 @@ app.post("/poll", (req: Request, res: Response) => {
 	res.send("Hello from POST Poll").status(201);
 });
 
+app.get("/all-polls", (req: Request, res: Response) => {
+	const polls = [
+		{
+			"id": 1,
+			"title": "First Poll"
+		},
+		{
+			"id": 2,
+			"title": "Second Poll"
+		},
+		{
+			"id": 3,
+			"title": "Third Poll"
+		}
+	]
+	
+	res.send(polls).status(200);
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
