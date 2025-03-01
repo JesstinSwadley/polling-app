@@ -1,36 +1,16 @@
-import express, { Express, Request, Response } from 'express';
+
+import express, { Express, Request } from 'express';
 import cors from 'cors';
+
+// Routers
+import { pollRouter } from './router/polls.routes';
 
 const app: Express = express();
 app.use(cors<Request>());
 app.use(express.json());
 
-app.post("/poll", (req: Request, res: Response) => {
-	let { pollTitle } = req.body;
-
-	console.log(pollTitle);
-
-	res.send("Hello from POST Poll").status(201);
-});
-
-app.get("/all-polls", (req: Request, res: Response) => {
-	const polls = [
-		{
-			"id": 1,
-			"title": "First Poll"
-		},
-		{
-			"id": 2,
-			"title": "Second Poll"
-		},
-		{
-			"id": 3,
-			"title": "Third Poll"
-		}
-	]
-	
-	res.send(polls).status(200);
-});
+// Routes
+app.use("/polls", pollRouter);
 
 const PORT = process.env.PORT || 3000;
 
