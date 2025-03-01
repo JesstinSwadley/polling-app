@@ -6,20 +6,25 @@ interface Polls {
 }
 
 const PollPage = async () => {
-	const res = await fetch('http://localhost:8080/all-polls')
+	const res = await fetch('http://localhost:8080/polls/all')
 
 	const polls: Polls[] = await res.json();
 
 	return (
-		<div>
+		<>
 			<h1>Current Polls</h1>
 			<ul>
 				{polls.map(poll => <li key={poll.id}>{poll.title}</li>)}
 			</ul>
 
-			<h2>Current Polls</h2>
-			<PollForm />
-		</div>
+			<div
+				className="flex flex-col justify-center items-center">	
+				<h2
+					className="text-4xl m-4">Create A New Poll</h2>
+
+				<PollForm />
+			</div>
+		</>
 	)
 }
 
