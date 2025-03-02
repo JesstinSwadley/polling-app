@@ -37,7 +37,7 @@ pollRouter.get("/all", (req: Request, res: Response) => {
 pollRouter.patch("/update", (req: Request, res: Response) => {
 	let { pollId, updateTitle } = req.body;
 
-	const findPoll: any = polls.find(poll => poll.id === pollId);
+	const findPoll: any = polls.find(poll => poll.id == pollId);
 
 	findPoll.title = updateTitle;
 
