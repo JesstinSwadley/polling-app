@@ -1,7 +1,7 @@
 'use client';
-import React, {  } from "react";
+import React from "react";
 
-export default function PollForm () {
+function CreatePollForm () {
 	async function FormAction(formData: FormData) {
 		const pollTitle = formData.get('pollTitleInput')
 
@@ -37,3 +37,5 @@ export default function PollForm () {
 		</>
 	)
 }
+
+export default CreatePollForm

@@ -6,7 +6,7 @@ export default function Home() {
 		<div>
 			<main>
 				<h1>Polling App</h1>
-				<Link href="/poll">Polls</Link>
+				<Link href="/polls">Polls</Link>
 			</main>
 		</div>
 	);
