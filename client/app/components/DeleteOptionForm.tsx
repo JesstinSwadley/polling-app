@@ -1,12 +1,12 @@
 'use client';
 import React from "react";
 
-function DeletePollForm () {
+function DeleteOptionForm () {
 	async function FormAction(formData: FormData) {
-		const pollId: any = formData.get('pollIdInput');
-		const queryParams = new URLSearchParams({ pollId });
+		const optionId: any = formData.get('optionIdInput');
+		const queryParams = new URLSearchParams({ optionId });
 
-		await fetch(`http://localhost:8080/polls/delete?${queryParams}`, {
+		await fetch(`http://localhost:8080/options/delete?${queryParams}`, {
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -21,20 +21,20 @@ function DeletePollForm () {
 				action={FormAction}>
 				<label
 					className="m-4 text-sm/6 font-medium text-gray-900"
-					htmlFor="pollTitleInput">What's the Poll ID</label>
+					htmlFor="pollTitleInput">What's the Option ID</label>
 				<input
 					className="p-4 grow text-gray-900 border border-blue-200 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-					id="pollIdInput" 
-					name="pollIdInput" 
+					id="optionIdInput" 
+					name="optionIdInput" 
 					type="number"
 				/>
 
 				<button
 					className="p-4 text-white bg-blue-600 rounded-md cursor-pointer"
-					type="submit">Delete Poll</button>
+					type="submit">Delete Option</button>
 			</form>
 		</>
 	)
 }
 
-export default DeletePollForm
+export default DeleteOptionForm

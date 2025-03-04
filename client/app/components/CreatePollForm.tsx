@@ -5,7 +5,7 @@ function CreatePollForm () {
 	async function FormAction(formData: FormData) {
 		const pollTitle = formData.get('pollTitleInput')
 
-		await fetch('http://localhost:8080/poll', {
+		await fetch('http://localhost:8080/polls/create', {
 			headers: {
 				'Content-Type': 'application/json'
 			},
