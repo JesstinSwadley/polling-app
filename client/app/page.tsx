@@ -8,6 +8,7 @@ export default function Home() {
 				<h1>Polling App</h1>
 				<Link href="/polls">Polls</Link>
 				<Link href="/options">Options</Link>
+				<Link href="/auth/register">Register</Link>
 			</main>
 		</div>
 	);
