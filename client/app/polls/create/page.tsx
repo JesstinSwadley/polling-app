@@ -1,14 +1,15 @@
-import PollCard from "../components/PollCard";
-import CreatePollForm from "../components/CreatePollForm";
-import UpdatePollForm from "../components/UpdatePollForm";
-import DeletePollForm from "../components/DeletePollForm";
+import React from "react";
+import PollCard from "@/app/components/PollCard";
+import CreatePollForm from "@/app/components/CreatePollForm";
+import UpdatePollForm from "@/app/components/UpdatePollForm";
+import DeletePollForm from "@/app/components/DeletePollForm";
 
 interface Polls {
 	id: number,
 	title: string
 }
 
-const PollsPage = async () => {
+const CreatePollsPage = async () => {
 	const res = await fetch('http://localhost:8080/polls/all')
 
 	const polls: Polls[] = await res.json();
@@ -41,4 +42,4 @@ const PollsPage = async () => {
 	)
 }
 
-export default PollsPage;
+export default CreatePollsPage;
