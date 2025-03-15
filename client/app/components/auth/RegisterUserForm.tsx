@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 
-function RegisterForm() {
+function RegisterUserForm() {
 	async function FormAction(formData: FormData) {
 		const username = formData.get('usernameInput');
 		const password = formData.get('passwordInput');
@@ -23,6 +23,7 @@ function RegisterForm() {
 			<form 				
 				className="flex flex-col bg-white rounded-lg p-8 space-y-4"
 				action={FormAction}>
+					
 				<div>
 					<label
 						className="m-4 text-sm/6 font-medium text-gray-900"
@@ -34,6 +35,7 @@ function RegisterForm() {
 						name='usernameInput'
 						type="text" />
 				</div>
+
 				<div>
 					<label
 						className="m-4 text-sm/6 font-medium text-gray-900"
@@ -49,11 +51,11 @@ function RegisterForm() {
 				<button
 					className="p-4 text-white bg-blue-600 rounded-md cursor-pointer"
 					type="submit">
-						Create Option
+						Register
 				</button>
 			</form>
 		</>
 	)
 }
 
-export default RegisterForm
+export default RegisterUserForm

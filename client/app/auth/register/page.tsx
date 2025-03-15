@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterForm from '@/app/components/auth/RegisterForm'
+import RegisterUserForm from '@/app/components/auth/RegisterUserForm'
 
 interface User {
 	username: string,
@@ -11,7 +11,7 @@ function AuthRegisterPage() {
 		<>
 			<h1>User Registration</h1>
 
-			<RegisterForm />
+			<RegisterUserForm />
 		</>
 	)
 }
