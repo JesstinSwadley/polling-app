@@ -1,12 +1,12 @@
 'use client';
 import React from 'react'
 
-function RegisterUserForm() {
+function LoginUserForm() {
 	async function FormAction(formData: FormData) {
 		const username = formData.get('usernameInput');
 		const password = formData.get('passwordInput');
 
-		await fetch('http://localhost:8080/auth/register', {
+		await fetch('http://localhost:8080/auth/login', {
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -20,10 +20,10 @@ function RegisterUserForm() {
 
 	return (
 		<>
-			<form 				
+			<form
 				className="flex flex-col bg-white rounded-lg p-8 space-y-4"
 				action={FormAction}>
-					
+
 				<div>
 					<label
 						className="m-4 text-sm/6 font-medium text-gray-900"
@@ -55,11 +55,12 @@ function RegisterUserForm() {
 				<button
 					className="p-4 text-white bg-blue-600 rounded-md cursor-pointer"
 					type="submit">
-						Register
+						Login
 				</button>
+
 			</form>
 		</>
 	)
 }
 
-export default RegisterUserForm
+export default LoginUserForm
