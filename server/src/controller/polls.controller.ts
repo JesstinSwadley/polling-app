@@ -1,4 +1,4 @@
-import { appendFile } from "node:fs";
+import { appendFile, readFileSync } from "node:fs";
 import { Request, Response } from "express";
 
 let polls = [
@@ -69,8 +69,17 @@ export const getAllPollsController = (req: Request, res: Response) => {
 export const updatePollController = (req: Request, res: Response) => {
 	try {
 		let { pollId, updateTitle } = req.body;
+
+		let pollJSON: Polls[] = JSON.parse(readFileSync('polls.json', 'utf8'));
+
+		console.log(pollJSON);
 	
-		const findPoll: any = polls.find(poll => poll.id == pollId);
+		const findPoll: Polls | undefined = pollJSON.find(poll => poll.id === pollId);
+
+		if (findPoll == undefined) {
+			res.status(200).send("Poll not found");
+			return;
+		}
 	
 		findPoll.title = updateTitle;
 	

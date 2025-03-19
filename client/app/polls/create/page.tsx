@@ -1,7 +1,6 @@
 import React from "react";
 import PollCard from "@/app/components/PollCard";
 import CreateNewPollForm from "@/app/components/polls/CreateNewPollForm";
-import UpdatePollForm from "@/app/components/UpdatePollForm";
 import DeletePollForm from "@/app/components/DeletePollForm";
 
 const CreatePollsPage = async () => {
@@ -20,12 +19,6 @@ const CreatePollsPage = async () => {
 				<h2 className="text-4xl m-4">Create A New Poll</h2>
 
 				<CreateNewPollForm />
-			</div>
-
-			<div>
-				<h2 className="text-4xl m-4">Update A Poll</h2>
-
-				<UpdatePollForm />
 			</div>
 
 			<div>
