@@ -1,30 +1,25 @@
 import React from "react";
 import PollCard from "@/app/components/PollCard";
-import CreatePollForm from "@/app/components/CreatePollForm";
+import CreateNewPollForm from "@/app/components/polls/CreateNewPollForm";
 import UpdatePollForm from "@/app/components/UpdatePollForm";
 import DeletePollForm from "@/app/components/DeletePollForm";
 
-interface Polls {
-	id: number,
-	title: string
-}
-
 const CreatePollsPage = async () => {
-	const res = await fetch('http://localhost:8080/polls/all')
+	// const res = await fetch('http://localhost:8080/polls/all')
 
-	const polls: Polls[] = await res.json();
+	// const polls: Polls[] = await res.json();
 
 	return (
 		<>
 			<h1>Current Polls</h1>
-			<div>
+			{/* <div>
 				{polls.map(poll => <PollCard key={poll.id} title={poll.title}/>)}
-			</div>
+			</div> */}
 
 			<div className="flex flex-col justify-center items-center">	
 				<h2 className="text-4xl m-4">Create A New Poll</h2>
 
-				<CreatePollForm />
+				<CreateNewPollForm />
 			</div>
 
 			<div>

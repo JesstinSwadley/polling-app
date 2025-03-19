@@ -1,3 +1,4 @@
+import { appendFile } from "node:fs";
 import { Request, Response } from "express";
 
 let polls = [
@@ -15,16 +16,33 @@ let polls = [
 	}
 ]
 
+interface Polls {
+	id: number,
+	title: string
+}
+
 export const createPollController = (req: Request, res: Response) => {
 	try {
 		let { pollTitle } = req.body;
-	
-		polls.push({
+
+		if (!pollTitle || pollTitle == "") {
+			res.sendStatus(400);
+		}
+
+		let newPoll: Polls = {
 			id: Math.floor(Math.random() * 10),
 			"title": pollTitle
+		}
+
+		appendFile('polls.json', JSON.stringify(newPoll), (err) => {
+			if (err) throw err;
+			
+			console.log('Poll was created!');
 		});
 	
 		res.send("Hello from POST Poll").status(201);
+
+		return
 	} catch (error) {
 		console.error(error);
 

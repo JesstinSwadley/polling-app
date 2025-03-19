@@ -1,7 +1,7 @@
 'use client';
 import React from "react";
 
-function CreatePollForm () {
+function CreateNewPollForm () {
 	async function FormAction(formData: FormData) {
 		const pollTitle = formData.get('pollTitleInput')
 
@@ -32,10 +32,12 @@ function CreatePollForm () {
 				/>
 				<button
 					className="p-4 text-white bg-blue-600 rounded-md cursor-pointer"
-					type="submit">Create Poll</button>
+					type="submit">
+						Create New Poll
+				</button>
 			</form>
 		</>
 	)
 }
 
-export default CreatePollForm
+export default CreateNewPollForm
