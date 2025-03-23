@@ -1,27 +1,29 @@
 import { appendFile, readFileSync } from "node:fs";
 import { Request, Response } from "express";
+import { db } from "../db/drizzle";
+import { polls } from "../db/schema";
 
-let polls = [
-	{
-		"id": 1,
-		"title": "First Poll"
-	},
-	{
-		"id": 2,
-		"title": "Second Poll"
-	},
-	{
-		"id": 3,
-		"title": "Third Poll"
-	}
-]
+// let polls = [
+// 	{
+// 		"id": 1,
+// 		"title": "First Poll"
+// 	},
+// 	{
+// 		"id": 2,
+// 		"title": "Second Poll"
+// 	},
+// 	{
+// 		"id": 3,
+// 		"title": "Third Poll"
+// 	}
+// ]
 
 interface Polls {
 	id: number,
 	title: string
 }
 
-export const createPollController = (req: Request, res: Response) => {
+export const createPollController = async (req: Request, res: Response) => {
 	try {
 		let { pollTitle } = req.body;
 
@@ -29,16 +31,22 @@ export const createPollController = (req: Request, res: Response) => {
 			res.sendStatus(400);
 		}
 
-		let newPoll: Polls = {
-			id: Math.floor(Math.random() * 10),
-			"title": pollTitle
-		}
-
-		appendFile('polls.json', JSON.stringify(newPoll), (err) => {
-			if (err) throw err;
+		// appendFile('polls.json', JSON.stringify(newPoll), (err) => {
+		// 	if (err) throw err;
 			
-			console.log('Poll was created!');
-		});
+		// 	console.log('Poll was created!');
+		// });
+
+		const poll = await db
+						.insert(polls)
+						.values({
+							title: pollTitle
+						})
+						.returning({
+							id: polls.id
+						});
+
+		console.log(poll);
 	
 		res.send("Hello from POST Poll").status(201);
 
