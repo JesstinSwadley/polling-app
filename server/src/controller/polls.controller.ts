@@ -1,22 +1,7 @@
-import { appendFile, readFileSync } from "node:fs";
 import { Request, Response } from "express";
 import { db } from "../db/drizzle";
 import { polls } from "../db/schema";
-
-// let polls = [
-// 	{
-// 		"id": 1,
-// 		"title": "First Poll"
-// 	},
-// 	{
-// 		"id": 2,
-// 		"title": "Second Poll"
-// 	},
-// 	{
-// 		"id": 3,
-// 		"title": "Third Poll"
-// 	}
-// ]
+import { eq } from "drizzle-orm";
 
 interface Polls {
 	id: number,
@@ -31,12 +16,6 @@ export const createPollController = async (req: Request, res: Response) => {
 			res.sendStatus(400);
 		}
 
-		// appendFile('polls.json', JSON.stringify(newPoll), (err) => {
-		// 	if (err) throw err;
-			
-		// 	console.log('Poll was created!');
-		// });
-
 		const poll = await db
 						.insert(polls)
 						.values({
@@ -45,10 +24,8 @@ export const createPollController = async (req: Request, res: Response) => {
 						.returning({
 							id: polls.id
 						});
-
-		console.log(poll);
 	
-		res.send("Hello from POST Poll").status(201);
+		res.status(201).send(poll);
 
 		return
 	} catch (error) {
@@ -60,9 +37,11 @@ export const createPollController = async (req: Request, res: Response) => {
 	}
 }
 
-export const getAllPollsController = (req: Request, res: Response) => {
+export const getAllPollsController = async (req: Request, res: Response) => {
 	try {
-		res.send(polls).status(200);
+		const pollsList = await db.select().from(polls);
+
+		res.status(200).send(pollsList);
 
 		return
 	} catch (error) {
@@ -74,42 +53,40 @@ export const getAllPollsController = (req: Request, res: Response) => {
 	}
 }
 
-export const updatePollController = (req: Request, res: Response) => {
+export const updatePollController = async (req: Request, res: Response) => {
 	try {
 		let { pollId, updateTitle } = req.body;
 
-		let pollJSON: Polls[] = JSON.parse(readFileSync('polls.json', 'utf8'));
+		const updatePoll = await db
+								.update(polls)
+								.set({
+									title: updateTitle
+								})
+								.where(
+									eq(polls.id, pollId)
+								);
+	
+		res.status(200).send(updatePoll);
 
-		console.log(pollJSON);
-	
-		const findPoll: Polls | undefined = pollJSON.find(poll => poll.id === pollId);
-
-		if (findPoll == undefined) {
-			res.status(200).send("Poll not found");
-			return;
-		}
-	
-		findPoll.title = updateTitle;
-	
-		res.send(findPoll).status(200);
+		return;
 	} catch (error) {
 		console.error(error);
 
 		res.status(400).send();
 
-		return
+		return;
 	}
 }
 
-export const deletePollController = (req: Request, res: Response) => {
+export const deletePollController = async (req: Request, res: Response) => {
 	try {
 		let pollId: any = req.query.pollId;
 
-		const deletePoll = polls.filter(poll => poll.id != pollId);
+		const deletePoll = await db
+								.delete(polls)
+								.where(eq(polls.id, pollId));
 	
-		polls = deletePoll;
-	
-		res.send(polls).status(200);
+		res.status(200).send("poll deleted")
 
 		return
 	} catch (error) {
