@@ -1,21 +1,33 @@
 'use client';
 import React from 'react'
+import { redirect } from 'next/navigation'
 
 function RegisterUserForm() {
-	async function FormAction(formData: FormData) {
-		const username = formData.get('usernameInput');
-		const password = formData.get('passwordInput');
 
-		await fetch('http://localhost:8080/auth/register', {
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			method: 'POST',
-			body: JSON.stringify({
-				username,
-				password
-			})
-		});
+	const FormAction = async (formData: FormData) => {
+		try {
+			const username = formData.get('usernameInput');
+			const password = formData.get('passwordInput');
+	
+			const res = await fetch('http://localhost:8080/auth/register', {
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				method: 'POST',
+				body: JSON.stringify({
+					username,
+					password
+				})
+			});
+
+			const data = await res.json();
+	
+			console.log(data);
+			
+			redirect(`/user/1/dahsboard`);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	return (
