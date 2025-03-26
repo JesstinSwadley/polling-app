@@ -20,6 +20,8 @@ export const authRegisterController = async (req: Request, res: Response) => {
 
 		if (!username || !password) {
 			res.sendStatus(400);
+
+			return;
 		}
 
 		let hashPassword: string = bcrypt.hashSync(password, saltRounds);
@@ -33,11 +35,15 @@ export const authRegisterController = async (req: Request, res: Response) => {
 
 		console.log(user);
 
-		return res.status(201).send("User has been registered");
+		res.status(201).send("User has been registered");
+
+		return;
 	} catch (error) {
 		console.error(error);
 
-		return res.status(400).send();
+		res.status(400).send();
+
+		return;
 	}
 }
 
@@ -46,7 +52,9 @@ export const authLoginController = async (req: Request, res: Response) => {
 		let { username, password } = req.body;
 
 		if (!username || !password) {
-			return res.sendStatus(400);
+			res.sendStatus(400);
+
+			return;
 		}
 
 		let user = await db
@@ -57,13 +65,17 @@ export const authLoginController = async (req: Request, res: Response) => {
 						);
 
 		if (!user) {
-			return res.status(404).json({ error: 'User not found'});
+			res.status(404).json({ error: 'User not found'});
+
+			return;
 		}
 
 		const match: boolean = await bcrypt.compare(password, user[0].password);
 
 		if (!match) {
-			return res.status(200).send("Username or password is incorrect");
+			res.status(200).send("Username or password is incorrect");
+
+			return;
 		}
 
 		let accessToken = jwt.sign(
@@ -76,10 +88,14 @@ export const authLoginController = async (req: Request, res: Response) => {
 			}
 		);
 
-		return res.status(200).send({ accessToken, id: user[0].id });
+		res.status(200).send({ accessToken, id: user[0].id });
+
+		return;
 	} catch (error) {
 		console.error(error);
 
-		return res.status(400).send("An error has occured");
+		res.status(400).send("An error has occured");
+
+		return;
 	}
 }
