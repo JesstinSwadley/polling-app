@@ -26,14 +26,12 @@ export const authRegisterController = async (req: Request, res: Response) => {
 
 		let hashPassword: string = bcrypt.hashSync(password, saltRounds);
 
-		const user = await db
-					.insert(users)
-					.values({
-						username,
-						password: hashPassword
-					});
-
-		console.log(user);
+		await db
+			.insert(users)
+			.values({
+				username,
+				password: hashPassword
+			});
 
 		res.status(201).send("User has been registered");
 

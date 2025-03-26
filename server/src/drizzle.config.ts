@@ -15,6 +15,7 @@ export default defineConfig({
 		port,
 		user,
 		password,
-		database
+		database,
+		ssl: false
 	}
 });

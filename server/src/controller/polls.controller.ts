@@ -81,6 +81,8 @@ export const updatePollController = async (req: Request, res: Response) => {
 export const deletePollController = async (req: Request, res: Response) => {
 	try {
 		let pollId: any = req.query.pollId;
+		
+		pollId = Number(pollId);
 
 		const deletePoll = await db
 								.delete(polls)

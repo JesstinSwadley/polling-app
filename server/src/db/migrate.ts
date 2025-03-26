@@ -7,7 +7,10 @@ const sql: Pool = new Pool({
 	port: Number(process.env.DB_PORT),
 	user: process.env.DB_USER,
 	password: process.env.DB_PASSWORD,
-	database: process.env.DB_DATABASE
+	database: process.env.DB_DATABASE,
+	ssl: {
+		rejectUnauthorized: false
+	}
 });
 
 const db = drizzle(sql);

@@ -5,6 +5,6 @@ import { auth } from "../middleware/auth";
 export const pollRouter: Router = Router();
 
 pollRouter.post("/create", auth, createPollController);
-pollRouter.get("/all", auth, getAllPollsController);
+pollRouter.get("/all", getAllPollsController);
 pollRouter.patch("/update", auth, updatePollController);
 pollRouter.delete("/delete", auth, deletePollController);
