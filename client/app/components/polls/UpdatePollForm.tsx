@@ -5,10 +5,16 @@ function UpdatePollForm () {
 	async function FormAction(formData: FormData) {
 		const pollTitle = formData.get('pollTitleInput');
 		const pollId = formData.get('pollIdInput');
+		const token = localStorage.getItem('token')
+
+		if (!token) {
+			throw new Error("There was an error");
+		}
 
 		await fetch('http://localhost:8080/polls/update', {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': token
 			},
 			method: 'PATCH',
 			body: JSON.stringify({

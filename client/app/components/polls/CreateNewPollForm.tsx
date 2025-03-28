@@ -4,10 +4,16 @@ import React from "react";
 function CreateNewPollForm () {
 	async function FormAction(formData: FormData) {
 		const pollTitle = formData.get('pollTitleInput')
+		const token = localStorage.getItem('token')
+
+		if (!token) {
+			throw new Error("There was an error");
+		}
 
 		await fetch('http://localhost:8080/polls/create', {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': token
 			},
 			method: 'POST',
 			body: JSON.stringify({

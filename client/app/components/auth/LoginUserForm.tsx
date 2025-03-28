@@ -21,7 +21,8 @@ function LoginUserForm() {
 
 			const data = await res.json();
 
-			console.log(data);
+			localStorage.setItem("token", data.accessToken);
+			localStorage.setItem("id", data.id);
 
 			redirect(`/user/1/dahsboard`);
 		} catch (error) {

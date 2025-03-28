@@ -5,10 +5,17 @@ function DeletePollForm () {
 	async function FormAction(formData: FormData) {
 		const pollId: any = formData.get('pollIdInput');
 		const queryParams = new URLSearchParams({ pollId });
+		const token = localStorage.getItem('token')
+
+		if (!token) {
+			throw new Error("There was an error");
+		}
+
 
 		await fetch(`http://localhost:8080/polls/delete?${queryParams}`, {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': token
 			},
 			method: 'DELETE'
 		})

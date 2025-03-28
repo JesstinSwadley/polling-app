@@ -9,7 +9,7 @@ function RegisterUserForm() {
 			const username = formData.get('usernameInput');
 			const password = formData.get('passwordInput');
 	
-			const res = await fetch('http://localhost:8080/auth/register', {
+			await fetch('http://localhost:8080/auth/register', {
 				headers: {
 					'Content-Type': 'application/json'
 				},
@@ -20,11 +20,7 @@ function RegisterUserForm() {
 				})
 			});
 
-			const data = await res.json();
-	
-			console.log(data);
-			
-			redirect(`/user/1/dahsboard`);
+			redirect(`/login`);
 		} catch (error) {
 			console.log(error);
 		}
