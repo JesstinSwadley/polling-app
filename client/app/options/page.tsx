@@ -1,6 +1,6 @@
 import CreateOptionForm from "../components/CreateOptionForm";
 import DeleteOptionForm from "../components/DeleteOptionForm";
-import PollCard from "../components/PollCard";
+import PollCard from "../components/polls/display/PollCard";
 import UpdateOptionForm from "../components/UpdateOptionForm";
 
 interface Options {

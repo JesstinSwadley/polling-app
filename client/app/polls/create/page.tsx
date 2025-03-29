@@ -1,6 +1,6 @@
 import React from "react";
-import PollCard from "@/app/components/PollCard";
-import CreateNewPollForm from "@/app/components/polls/CreateNewPollForm";
+import PollCard from "@/app/components/polls/display/PollCard";
+import CreateNewPollForm from "@/app/components/polls/forms/CreateNewPollForm";
 
 const CreatePollsPage = async () => {
 	// const res = await fetch('http://localhost:8080/polls/all')

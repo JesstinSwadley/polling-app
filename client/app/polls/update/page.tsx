@@ -1,6 +1,6 @@
 import React from "react"
 
-import UpdatePollForm from "@/app/components/polls/UpdatePollForm";
+import UpdatePollForm from "@/app/components/polls/forms/UpdatePollForm";
 
 function UpdatePollPage() {
 	return (

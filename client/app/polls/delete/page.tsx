@@ -1,5 +1,5 @@
 import React from "react"
-import DeletePollForm from "@/app/components/polls/DeletePollForm";
+import DeletePollForm from "@/app/components/polls/forms/DeletePollForm";
 
 function DeletePollPage() {
 	return (
