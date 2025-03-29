@@ -2,9 +2,11 @@ import React from "react"
 import { redirect } from "next/navigation";
 
 function UserDashboardPage() {
-	// if () {
-	// 	redirect("/auth/login");
-	// }
+	const token = localStorage.getItem('token');
+
+	if (!token) {
+		redirect("/auth/login");
+	}
 
 	return (
 		<>

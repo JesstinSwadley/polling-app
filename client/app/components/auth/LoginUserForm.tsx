@@ -24,7 +24,7 @@ function LoginUserForm() {
 			localStorage.setItem("token", data.accessToken);
 			localStorage.setItem("id", data.id);
 
-			redirect(`/user/1/dahsboard`);
+			redirect(`/user/${data.id}/dahsboard`);
 		} catch (error) {
 			console.log(error);
 		}
