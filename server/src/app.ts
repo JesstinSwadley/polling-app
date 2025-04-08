@@ -1,6 +1,10 @@
-import express, { Express } from 'express';
+import express, { Express } from "express";
+
+import { pollRouter } from "./router/polls.routes";
 
 const app: Express = express();
+
+app.use("/polls", pollRouter);
 
 const PORT = process.env.PORT || 3000;
 
