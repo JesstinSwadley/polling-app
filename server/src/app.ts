@@ -1,12 +1,16 @@
 import express, { Express } from "express";
 
+// Routers
 import { pollRouter } from "./router/polls.routes";
 
+const PORT = process.env.PORT || 3000;
 const app: Express = express();
 
-app.use("/polls", pollRouter);
+// Express Config
+app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+// Routes
+app.use("/polls", pollRouter);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on Port: ${PORT}`);
