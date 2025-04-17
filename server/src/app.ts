@@ -1,4 +1,5 @@
-import express, { Express } from "express";
+import express, { Express, Request } from "express";
+import cors from "cors";
 
 // Routers
 import { pollRouter } from "./router/polls.routes";
@@ -8,6 +9,7 @@ const app: Express = express();
 
 // Express Config
 app.use(express.json());
+app.use(cors<Request>());
 
 // Routes
 app.use("/polls", pollRouter);

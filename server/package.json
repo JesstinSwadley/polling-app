@@ -19,11 +19,13 @@
   },
   "homepage": "https://github.com/JesstinSwadley/polling-app#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "drizzle-orm": "^0.42.0",
     "express": "^5.1.0",
     "pg": "^8.14.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.0",
     "@types/pg": "^8.11.13",
