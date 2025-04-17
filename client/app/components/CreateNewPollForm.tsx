@@ -2,20 +2,31 @@
 import React from 'react'
 
 const CreateNewPollForm = () => {
-	const NewPollFormAction = (formData : FormData) => {
-		console.log(formData);
+	const NewPollFormAction = async (formData : FormData) => {
+		const pollQuestion = formData.get("pollQuestionInput");
+
+		await fetch("http://localhost:8080/polls/create", {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({
+				pollQuestion
+			})
+		});
 	}
 
 	return (
 		<>
-			<form action="">
+			<form 
+				action={NewPollFormAction}>
 				<div>
 					<label 
-						htmlFor="pollQueryInput">
+						htmlFor="pollQuestionInput">
 							Poll Query
 					</label>
 					<input
-						id="pollQueryInput"
+						id="pollQuestionInput"
 						type="text" />
 				</div>
 				<button 
