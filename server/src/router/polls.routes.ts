@@ -22,3 +22,7 @@ pollRouter.post("/create", async (req: Request, res: Response) => {
 
 	res.status(201).send("Poll was created");
 });
+
+pollRouter.get("/get-all", (req: Request, res: Response) => {
+	res.status(200).send("List of all Polls");
+});
