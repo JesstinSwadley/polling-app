@@ -5,7 +5,7 @@ const CreateNewPollForm = () => {
 	const NewPollFormAction = async (formData : FormData) => {
 		const pollQuestion = formData.get("pollQuestionInput");
 
-		await fetch("http://localhost:8080/polls/create", {
+		await fetch(`${process.env.NODE_API}/polls/create`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},
