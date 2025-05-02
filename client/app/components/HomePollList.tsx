@@ -1,4 +1,5 @@
 import React from 'react'
+import PollCard from './PollCard';
 
 type Poll = {
 	id: number,
@@ -12,7 +13,7 @@ const HomePollList = async () => {
 
 	return (
 		<div>
-			{polls.map(poll => <li key={poll.id}><span>{poll.question}</span></li>)}
+			{polls.map(poll => <PollCard key={poll.id} title={poll.question}/>)}
 		</div>
 	)
 }
