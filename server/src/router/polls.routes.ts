@@ -28,3 +28,7 @@ pollRouter.get("/get-all", async (req: Request, res: Response) => {
 
 	res.status(200).send(pollsList);
 });
+
+pollRouter.patch("/update", (req: Request, res: Response) => {
+	res.status(200).send("Polling PATCH route");
+});
