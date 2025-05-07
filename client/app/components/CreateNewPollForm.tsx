@@ -23,7 +23,7 @@ const CreateNewPollForm = () => {
 				<div>
 					<label 
 						htmlFor="pollQuestionInput">
-							Poll Query
+							Poll Question
 					</label>
 					<input
 						id="pollQuestionInput"
