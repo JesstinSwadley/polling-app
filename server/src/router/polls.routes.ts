@@ -30,5 +30,9 @@ pollRouter.get("/get-all", async (req: Request, res: Response) => {
 });
 
 pollRouter.patch("/update", (req: Request, res: Response) => {
+	const { pollId, pollQuestion } = req.body;
+
+	console.log(pollId, pollQuestion);
+
 	res.status(200).send("Polling PATCH route");
 });
