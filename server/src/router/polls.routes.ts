@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import { db } from "../db/drizzle";
 import { polls } from "../db/schema";
+import { eq } from "drizzle-orm";
 
 export const pollRouter: Router = Router();
 
@@ -29,10 +30,21 @@ pollRouter.get("/get-all", async (req: Request, res: Response) => {
 	res.status(200).send(pollsList);
 });
 
-pollRouter.patch("/update", (req: Request, res: Response) => {
+pollRouter.patch("/update", async (req: Request, res: Response) => {
 	const { pollId, pollQuestion } = req.body;
 
-	console.log(pollId, pollQuestion);
+	if (!pollId || pollQuestion == "") {
+		res.sendStatus(400);
+	}
 
-	res.status(200).send("Polling PATCH route");
+	const updatePoll = await db
+							.update(polls)
+							.set({
+								question: pollQuestion
+							})
+							.where(
+								eq(polls.id, pollId)
+							)
+
+	res.status(200).send("Poll has been updated");
 });
