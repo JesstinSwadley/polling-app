@@ -2,9 +2,26 @@
 import React from 'react'
 
 const UpdatePollForm = () => {
+	const UpdatePollFormAction = async (formData: FormData) => {
+		const updatePollId = formData.get("updatePollIdInput");
+		const updatePollQuestion = formData.get("updatePollQuestionInput");
+
+		await fetch(`${process.env.NODE_API}/polls/update`, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'PATCH',
+			body: JSON.stringify({
+				pollId: updatePollId,
+				pollQuestion: updatePollQuestion
+			})
+		});
+	}
+
 	return (
 		<>
-			<form action="">
+			<form 
+				action={UpdatePollFormAction}>
 				<div>
 					<label
 
