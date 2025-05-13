@@ -48,3 +48,7 @@ pollRouter.patch("/update", async (req: Request, res: Response) => {
 
 	res.status(200).send("Poll has been updated");
 });
+
+pollRouter.delete("/delete", (req: Request, res: Response) => {
+	res.status(200).send("Poll has been deleted")
+});
