@@ -7,8 +7,6 @@ const PollsPage = () => {
 		<>
 			<h1>Poll Route</h1>
 
-			<Link href="/polls/update">Update Poll</Link>
-
 			<CreateNewPollForm />
 		</>
 	)

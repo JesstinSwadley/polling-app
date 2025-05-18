@@ -4,10 +4,7 @@ import HomePollList from "./components/HomePollList";
 export default function Home() {
 	return (
 		<>
-			<li>
-				<Link href="/polls">Create Poll</Link>
-			</li>
-			
+			<h1>Home Page</h1>
 
 			<HomePollList />
 		</>
