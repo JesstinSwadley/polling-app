@@ -49,6 +49,12 @@ pollRouter.patch("/update", async (req: Request, res: Response) => {
 	res.status(200).send("Poll has been updated");
 });
 
-pollRouter.delete("/delete", (req: Request, res: Response) => {
-	res.status(200).send("Poll has been deleted")
+pollRouter.delete("/delete", async (req: Request, res: Response) => {
+	let pollId: any = req.query.pollId;
+
+	pollId = Number(pollId);
+
+	const deletePoll = await db.delete(polls).where(eq(polls.id, pollId));
+
+	res.status(200).send("Poll has been deleted");
 });
