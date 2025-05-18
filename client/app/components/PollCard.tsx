@@ -1,9 +1,13 @@
+interface Poll {
+	title: string
+}
+
 import React from 'react'
 
-const PollCard = (props: any) => {
+const PollCard = (polls: Poll ) => {
 	return (
 		<div>
-			<p>{props.title}</p>
+			<p>{polls.title}</p>
 		</div>
 	)
 }
