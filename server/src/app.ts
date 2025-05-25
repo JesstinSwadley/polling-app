@@ -3,6 +3,7 @@ import cors from "cors";
 
 // Routers
 import { pollRouter } from "./router/polls.routes";
+import { optionRouter } from "./router/options.routes";
 
 const PORT = process.env.PORT || 3000;
 const app: Express = express();
@@ -13,6 +14,7 @@ app.use(cors<Request>());
 
 // Routes
 app.use("/polls", pollRouter);
+app.use("/options", optionRouter);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on Port: ${PORT}`);

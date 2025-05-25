@@ -1,9 +1,25 @@
 import React from 'react'
 
 const CreateNewOptionForm = () => {
+	const newOptionFormAction = async (formData: FormData) => {
+		const pollId = formData.get("optionPollIdInput");
+		const optionValue = formData.get("optionValueInput");
+
+		await fetch(`${process.env.NODE_API}/options/create`, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({
+				pollId,
+				optionValue
+			})
+		});
+	}
+
 	return (
 		<>
-			<form action="">
+			<form action={newOptionFormAction}>
 				<div>
 					<label 
 						htmlFor="optionPollIdInput">
@@ -16,10 +32,10 @@ const CreateNewOptionForm = () => {
 				</div>
 
 				<div>
-					<label htmlFor="pollOptionInput">Poll Option</label>
+					<label htmlFor="optionValueInput">Option Value</label>
 
 					<input
-						id="pollOptionInput"
+						id="optionValueInput"
 						type="text" />
 				</div>
 
