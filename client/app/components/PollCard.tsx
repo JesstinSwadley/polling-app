@@ -1,13 +1,15 @@
 interface Poll {
-	title: string
+	title: string,
+	id: number
 }
 
 import React from 'react'
+import Link from 'next/link'
 
 const PollCard = (polls: Poll ) => {
 	return (
 		<div>
-			<p>{polls.title}</p>
+			<Link href={`/polls/${polls.id}`}>{polls.title}</Link>
 		</div>
 	)
 }

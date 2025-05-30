@@ -13,7 +13,7 @@ const HomePollList = async () => {
 
 	return (
 		<div>
-			{polls.map(poll => <PollCard key={poll.id} title={poll.question}/>)}
+			{polls.map(poll => <PollCard key={poll.id} title={poll.question} id={poll.id}/>)}
 		</div>
 	)
 }

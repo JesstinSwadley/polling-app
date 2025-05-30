@@ -29,6 +29,13 @@ const CreateNewPollForm = () => {
 						id="pollQuestionInput"
 						type="text" />
 				</div>
+				
+				<div>
+					<label htmlFor=""></label>
+					<input 
+						id="optionValueInput"
+						type="text" />
+				</div>
 				<button 
 					type="submit">
 						Create New Poll
