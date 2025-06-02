@@ -33,7 +33,7 @@ export const createOptionController = async (req: Request, res: Response) => {
 
 export const getAllPollOptionsController = async (req: Request, res: Response) => {
 	try {
-		const pollId = req.query.poll_id;
+		const pollId = Number(req.query.poll_id);
 
 		const pollOptions = await db.select().from(options).where(eq(options.poll_id, pollId));
 
