@@ -1,4 +1,4 @@
-import DeletePollForm from '@/app/components/DeletePollForm'
+import DeletePollForm from '@/app/components/Polls/DeletePollForm'
 import React from 'react'
 
 const DeletePollPage = () => {

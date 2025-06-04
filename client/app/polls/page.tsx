@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import CreateNewPollForm from '@/app/components/CreateNewPollForm';
+import CreateNewPollForm from '@/app/components/Polls/CreateNewPollForm';
 
 const PollsPage = () => {
 	return (

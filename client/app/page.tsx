@@ -1,5 +1,5 @@
 import Link from "next/link";
-import HomePollList from "./components/HomePollList";
+import HomePollList from "./components/Polls/HomePollList";
 
 export default function Home() {
 	return (
