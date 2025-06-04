@@ -1,10 +1,10 @@
+import React from 'react'
+import Link from 'next/link'
+
 interface Poll {
 	title: string,
 	id: number
 }
-
-import React from 'react'
-import Link from 'next/link'
 
 const PollCard = (polls: Poll ) => {
 	return (

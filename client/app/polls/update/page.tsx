@@ -1,5 +1,5 @@
 import React from 'react'
-import UpdatePollForm from '@/app/components/UpdatePollForm';
+import UpdatePollForm from '@/app/components/Polls/UpdatePollForm';
 
 const UpdatePollPage = () => {
 	return (

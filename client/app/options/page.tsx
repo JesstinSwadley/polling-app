@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateNewOptionForm from '../components/CreateNewOptionForm';
+import CreateNewOptionForm from '../components/Options/CreateNewOptionForm';
 
 const OptionPage = () => {
 	return (
