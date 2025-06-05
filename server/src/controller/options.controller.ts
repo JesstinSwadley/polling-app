@@ -48,3 +48,28 @@ export const getAllPollOptionsController = async (req: Request, res: Response) =
 		return;
 	}
 }
+
+export const updateOptionController = async (req: Request, res: Response) => {
+	try {
+		const { optionId, optionValue } = req.body;
+
+		await db
+				.update(options)
+				.set({
+					value: optionValue
+				})
+				.where(
+					eq(options.id, optionId)
+				)
+
+		res.status(200).send("Option has been updated");
+
+		return;
+	} catch (error) {
+		console.error(error);
+
+		res.status(400).send();
+
+		return;
+	}
+}
