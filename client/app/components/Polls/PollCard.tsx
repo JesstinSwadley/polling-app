@@ -9,7 +9,7 @@ interface Poll {
 const PollCard = (polls: Poll ) => {
 	return (
 		<div>
-			<Link href={`/polls/${polls.id}`}>{polls.title}</Link>
+			<Link href={`/polls/${polls.id}`} title={polls.title}>{polls.title}</Link>
 		</div>
 	)
 }

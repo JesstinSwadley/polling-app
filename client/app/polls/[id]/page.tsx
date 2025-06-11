@@ -1,9 +1,14 @@
+import PollOptionsList from '@/app/components/Options/PollOptionsList'
 import React from 'react'
 
-const page = () => {
+const UniquePollPage = (title: string) => {
 	return (
-		<div>page</div>
+		<>
+			{title}
+
+			<PollOptionsList />
+		</>
 	)
 }
 
-export default page
+export default UniquePollPage
