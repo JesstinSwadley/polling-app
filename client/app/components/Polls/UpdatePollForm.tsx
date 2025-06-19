@@ -20,23 +20,36 @@ const UpdatePollForm = () => {
 
 	return (
 		<>
-			<form 
+			<form
+				className="flex flex-col bg-white rounded-lg p-8 space-y-4"
 				action={UpdatePollFormAction}>
 				<div>
 					<label
-
-						htmlFor="updatePollIdInput">Poll Id</label>
+						className="m-4 text-sm/6 font-medium text-gray-900"
+						htmlFor="updatePollIdInput">
+							Poll Id
+					</label>
 					<input
+						className="p-4 grow text-gray-900 border border-blue-200 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
 						id="updatePollIdInput" 
 						type="text" />
 				</div>
 				<div>
-					<label htmlFor="updatePollQuestionInput">Update Poll Question</label>
+					<label
+						className="m-4 text-sm/6 font-medium text-gray-900"
+						htmlFor="updatePollQuestionInput">
+							Update Poll Question
+					</label>
 					<input
+						className="p-4 grow text-gray-900 border border-blue-200 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
 						id="updatePollQuestionInput"
 						type="text" />
 				</div>
-				<button>Update Poll</button>
+				<button 
+					className="p-4 text-white bg-blue-600 rounded-md cursor-pointer"
+					type="submit">
+					Update Poll
+				</button>
 			</form>
 		</>
 	)

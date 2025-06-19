@@ -6,7 +6,9 @@ const DeletePollPage = () => {
 		<>
 			<h1>Delete Poll Route</h1>
 
-			<DeletePollForm />
+			<div className="flex flex-col justify-center items-center">
+				<DeletePollForm />
+			</div>
 		</>
 	)
 }

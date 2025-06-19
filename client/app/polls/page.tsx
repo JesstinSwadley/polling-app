@@ -7,7 +7,9 @@ const PollsPage = () => {
 		<>
 			<h1>Poll Route</h1>
 
-			<CreateNewPollForm />
+			<div className="flex flex-col justify-center items-center">
+				<CreateNewPollForm />
+			</div>
 		</>
 	)
 }

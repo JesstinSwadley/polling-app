@@ -6,7 +6,9 @@ const UpdatePollPage = () => {
 		<>
 			<h1>Update Poll Route</h1>
 
-			<UpdatePollForm />
+			<div className="flex flex-col justify-center items-center">
+				<UpdatePollForm />
+			</div>
 		</>
 	)
 }
