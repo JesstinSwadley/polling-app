@@ -6,7 +6,9 @@ const UpdateOptionPage = () => {
 		<>
 			<h1>Update Option Page</h1>
 
-			<UpdateOptionForm />
+			<div className="flex flex-col justify-center items-center">
+				<UpdateOptionForm />
+			</div>
 		</>
 	)
 }

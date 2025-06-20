@@ -6,7 +6,9 @@ const OptionPage = () => {
 		<>
 			<h1>Option Route</h1>
 
-			<CreateNewOptionForm />
+			<div className="flex flex-col justify-center items-center">
+				<CreateNewOptionForm />
+			</div>
 		</>
 	)
 }

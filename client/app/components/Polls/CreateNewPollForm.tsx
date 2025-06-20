@@ -44,11 +44,13 @@ const CreateNewPollForm = () => {
 						id="optionValueInput"
 						type="text" />
 				</div>
+
 				<button
 					className="p-4 text-white bg-blue-600 rounded-md cursor-pointer"
 					type="submit">
 						Create New Poll
 				</button>
+				
 			</form>
 		</>
 	)
