@@ -10,3 +10,9 @@ export const options = pgTable("options", {
 	value: text('value').notNull(),
 	poll_id: integer('poll_id').references(() => polls.id, {onDelete: 'cascade'}).notNull()
 });
+
+export const  votes = pgTable("votes", {
+	id: integer().primaryKey().generatedAlwaysAsIdentity(),
+	poll_id: integer('poll_id').references(() => polls.id, {onDelete: 'cascade'}).notNull(),
+	option_id: integer('poll_id').references(() => polls.id, {onDelete: 'cascade'}).notNull(),
+});
