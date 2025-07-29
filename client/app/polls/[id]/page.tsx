@@ -1,4 +1,5 @@
 import PollOptionsList from '@/app/components/Options/PollOptionsList'
+import PollVotesList from '@/app/components/Votes/PollVotesList'
 import React from 'react'
 
 const UniquePollPage = (title: string) => {
@@ -7,6 +8,8 @@ const UniquePollPage = (title: string) => {
 			{title}
 
 			<PollOptionsList />
+
+			<PollVotesList />
 		</>
 	)
 }
