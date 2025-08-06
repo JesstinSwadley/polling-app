@@ -5,7 +5,7 @@ const DeletePollForm = () => {
 	const DeletePollFormAction = async (formData: FormData) => {
 		const deletePollId = formData.get("deletePollIdInput");
 
-		await fetch(`${process.env.NODE_API}/polls/delete?pollId=${deletePollId}`, {
+		await fetch(`http://localhost:8080/polls/delete?pollId=${deletePollId}`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},

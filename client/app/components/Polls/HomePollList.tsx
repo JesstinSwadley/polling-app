@@ -7,7 +7,7 @@ type Poll = {
 }
 
 const HomePollList = async () => {
-	const res = await fetch(`${process.env.NODE_API}/polls/get-all`);
+	const res = await fetch(`http://localhost:8080/polls/get-all`);
 
 	const polls: Poll[] = await res.json();
 
