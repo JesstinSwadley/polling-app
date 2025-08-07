@@ -25,7 +25,8 @@ const DeletePollForm = () => {
 						htmlFor="deletePollIdInput">Poll Id</label>
 					<input
 						className="p-4 grow text-gray-900 border border-blue-200 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-						id="deletePollIdInput" 
+						id="deletePollIdInput"
+						name="deletePollIdInput"
 						type="text" />
 				</div>
 				<button
