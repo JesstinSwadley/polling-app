@@ -3,17 +3,17 @@ import React from 'react'
 
 const CreateNewOptionForm = () => {
 	const newOptionFormAction = async (formData: FormData) => {
-		const pollId = formData.get("optionPollIdInput");
-		const optionValue = formData.get("optionValueInput");
+		const pollId = formData.get("choicePollIdInput");
+		const choiceValue = formData.get("choiceValueInput");
 
-		await fetch(`${process.env.NODE_API}/options/create`, {
+		await fetch(`${process.env.NODE_API}/choices/create`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			method: 'POST',
 			body: JSON.stringify({
 				pollId,
-				optionValue
+				choiceValue
 			})
 		});
 	}
@@ -26,26 +26,26 @@ const CreateNewOptionForm = () => {
 				<div>
 					<label
 						className="m-4 text-sm/6 font-medium text-gray-900"
-						htmlFor="optionPollIdInput">
+						htmlFor="choicePollIdInput">
 							Poll Id
 						</label>
 
 					<input
 						className="p-4 grow text-gray-900 border border-blue-200 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-						id="optionPollIdInput"
+						id="choicePollIdInput"
 						type="text" />
 				</div>
 
 				<div>
 					<label 
 						className="m-4 text-sm/6 font-medium text-gray-900"
-						htmlFor="optionValueInput">
+						htmlFor="choiceValueInput">
 							Option Value
 					</label>
 
 					<input
 						className="p-4 grow text-gray-900 border border-blue-200 rounded-lg placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-						id="optionValueInput"
+						id="choiceValueInput"
 						type="text" />
 				</div>
 

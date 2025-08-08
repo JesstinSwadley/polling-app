@@ -1,4 +1,4 @@
-import PollOptionsList from '@/app/components/Options/PollOptionsList'
+import PollOptionsList from '@/app/components/Choices/PollChoicesList'
 import PollVotesList from '@/app/components/Votes/PollVotesList'
 import React from 'react'
 
