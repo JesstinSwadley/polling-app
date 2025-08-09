@@ -6,7 +6,7 @@ const CreateNewOptionForm = () => {
 		const pollId = formData.get("choicePollIdInput");
 		const choiceValue = formData.get("choiceValueInput");
 
-		await fetch(`${process.env.NODE_API}/choices/create`, {
+		await fetch(`http://localhost:8080/choices/create`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},

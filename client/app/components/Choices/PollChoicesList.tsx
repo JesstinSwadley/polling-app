@@ -7,7 +7,7 @@ type Choice = {
 }
 
 const PollChoicesList = async () => {
-	const res = await fetch(`${process.env.NODE_API}/choices/get-all`);
+	const res = await fetch(`http://localhost:8080/choices/get-all`);
 
 	const choices: Choice[] = await res.json();
 

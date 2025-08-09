@@ -6,7 +6,7 @@ const UpdateChoiceForm = () => {
 		const pollId = formData.get("choicePollIdInput");
 		const updateChoiceValue = formData.get("updateChoiceValueInput");
 
-		await fetch(`${process.env.NODE_API}/choices/update`, {
+		await fetch(`http://localhost:8080/choices/update`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},
