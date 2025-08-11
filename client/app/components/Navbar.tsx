@@ -21,16 +21,16 @@ const Navbar = () => {
 				</div>
 				
 				<div>
-					<span>Options</span>
+					<span>Choices</span>
 					<ul>
 						<li>
-							<Link href={`/options`}>Create New Option</Link>
+							<Link href={`/choices`}>Create New Choice</Link>
 						</li>
 						<li>
-							<Link href={`/options/update`}>Update Option</Link>
+							<Link href={`/choices/update`}>Update Choice</Link>
 						</li>
 						<li>
-							<Link href={`/options/delete`}>Delete Option</Link>
+							<Link href={`/choices/delete`}>Delete Choice</Link>
 						</li>
 					</ul>
 				</div>

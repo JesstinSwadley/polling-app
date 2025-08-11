@@ -5,9 +5,9 @@ import { eq } from "drizzle-orm";
 
 export const createVoteController = async (req: Request, res: Response) => {
 	try {
-		const { pollId, optionId } = req.body;
+		const { pollId, choiceId } = req.body;
 
-		if (!pollId || !optionId) {
+		if (!pollId || !choiceId) {
 			throw new Error("Missing Data");
 		}
 
@@ -15,7 +15,7 @@ export const createVoteController = async (req: Request, res: Response) => {
 			.insert(votes)
 			.values({
 				poll_id: pollId,
-				option_id: optionId
+				choice_id: choiceId
 			})
 			.returning({
 				id: votes.id
