@@ -54,3 +54,52 @@ export const listVoteController = async (req: Request, res: Response) => {
 		return;
 	}
 }
+
+export const updateVoteController = async (req: Request, res: Response) => {
+	try {
+		const { voteId, choiceId } = req.body;
+
+		if (!voteId || !choiceId ) {
+			throw new Error("Missing Data");
+		}
+
+		await db
+				.update(votes)
+				.set({
+					choice_id: choiceId
+				})
+				.where(
+					eq(votes.id, voteId)
+				)
+
+		res.status(200).send("Vote has been updated");
+	} catch (error) {
+		console.error(error);
+
+		res.status(400).send(error);
+
+		return;
+	}
+}
+
+export const deleteVoteController = async (req: Request, res: Response) => {
+	try {
+		let voteId: any = req.query.voteId;
+
+		if (!voteId) {
+			throw new Error("Missing Data");
+		}
+
+		voteId = Number(voteId);
+
+		await db.delete(votes).where(eq(votes.id, voteId));
+
+		res.status(200).send("Vote has been deleted");
+	} catch (error) {
+		console.error(error);
+
+		res.status(400).send();
+
+		return;
+	}
+}
