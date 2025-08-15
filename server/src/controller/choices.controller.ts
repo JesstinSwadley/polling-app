@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm";
 export const createChoiceController = async (req: Request, res: Response) => {
 	try {
 		const { pollId, choiceValue } = req.body;
-	
+
 		if (!pollId || !choiceValue) {
 			throw new Error("Missing Data");
 		}
