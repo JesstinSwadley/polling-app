@@ -1,0 +1,19 @@
+{
+  "name": "pern-polling-app",
+  "version": "0.0.1",
+  "description": "A simple polling app that allows users to create, manage and participate in polls",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesstinSwadley/polling-app.git"
+  },
+  "author": "Jesstin Swadley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesstinSwadley/polling-app/issues"
+  },
+  "homepage": "https://github.com/JesstinSwadley/polling-app#readme"
+}
