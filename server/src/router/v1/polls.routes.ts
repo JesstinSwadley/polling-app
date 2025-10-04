@@ -1,9 +1,8 @@
 import { Router } from "express";
+import { newPollController } from "../../controller/v1/polls.controller";
 
 // Router
 export const pollRouter: Router = Router();
 
 // Routes
-pollRouter.post("/new", (req, res) => {
-	res.send("new poll");
-});
+pollRouter.post("/new", newPollController);
