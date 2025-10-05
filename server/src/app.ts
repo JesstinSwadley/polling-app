@@ -1,10 +1,11 @@
-import express, { Express } from "express";
+import express, { Express, json } from "express";
 
 // env variables
 const PORT = process.env.PORT || 8000;
 
 // Express Config
 const app: Express = express();
+app.use(json());
 
 //Routers
 import { apiV1Router } from "./router/v1.routes";
