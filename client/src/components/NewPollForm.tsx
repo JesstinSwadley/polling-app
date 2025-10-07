@@ -1,8 +1,16 @@
 const NewPollForm = () => {
-	const NewPollFormAction = (formData: FormData) => {
+	const NewPollFormAction = async (formData: FormData) => {
 		const pollQuery = formData.get("pollQueryInput");
 
-		console.log(pollQuery);
+		await fetch(`http://localhost:8000/v1/polls/create/new`, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({
+				pollQuery
+			})
+		});
 	}
 
 	return (
