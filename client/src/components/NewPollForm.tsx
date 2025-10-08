@@ -1,8 +1,16 @@
-const NewPollForm = () => {
-	const NewPollFormAction = async (formData: FormData) => {
-		const pollQuery = formData.get("pollQueryInput");
+// Assign Backend API URL to variable
+const API_URL = import.meta.env.VITE_API_URL
 
-		await fetch(`http://localhost:8000/v1/polls/create/new`, {
+const NewPollForm = () => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		const form = e.target as HTMLFormElement;
+		const formData = new FormData(form);
+
+		const pollQuery = formData.get("pollQueryInput")
+
+		const response = await fetch(`${API_URL}/v1/polls/new`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -11,11 +19,14 @@ const NewPollForm = () => {
 				pollQuery
 			})
 		});
+
+		console.log(response);
 	}
 
 	return (
 		<>
-			<form action={NewPollFormAction}>
+			<form 
+				onSubmit={handleSubmit}>
 				<div>
 					<label
 						htmlFor="pollQueryInput">

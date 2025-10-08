@@ -9,7 +9,7 @@ const database 	= process.env.DB_DATABASE;
 export default defineConfig({
 	dialect: "postgresql",
 	schema: "./src/db/schema.ts",
-	out: "./src/db/migrations.ts",
+	out: "./src/db/migrations",
 	dbCredentials: {
 		host,
 		port,
