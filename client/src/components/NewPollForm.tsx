@@ -26,25 +26,29 @@ const NewPollForm = () => {
 	return (
 		<>
 			<form
-				className="w-full" 
-				onSubmit={handleSubmit}>
-				<div>
+				className="shadow-md p-4 mx-4 flex-col" 
+				onSubmit={handleSubmit}
+				>
+				<div 
+					className="mb-5">
 					<label
-						className="block"
+						className="block mb-2 text-sm"
 						htmlFor="pollQueryInput">
 							<span>Poll Query</span>
 					</label>
 					
 					<input
-						className="bg-white outline-gray-300 placeholder:text-gray-400 outline-solid m-4"
+						className="block w-full p-2.5 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
 						id="pollQueryInput"
 						name="pollQueryInput"
 						placeholder="Poll Query"
-						type="text" />
+						type="text" 
+						required
+						/>
 				</div>
 
 				<button
-					className="bg-blue-500 text-white p-2 rounded cursor-pointer"
+					className="mb-3 p-2 bg-blue-500 text-white rounded cursor-pointer"
 					type="submit">
 					<span>Create New Poll</span>
 				</button>

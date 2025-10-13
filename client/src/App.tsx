@@ -3,7 +3,9 @@ import NewPollForm from './components/NewPollForm'
 function App() {
 	return (
 		<>
-			<NewPollForm />
+			<section className='flex justify-center m-5'>
+				<NewPollForm />
+			</section>
 		</>
 	)
 }
