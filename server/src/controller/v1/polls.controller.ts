@@ -30,3 +30,17 @@ export const newPollController = async (req: Request, res: Response) => {
 		return;
 	}
 }
+
+export const  getListOfAllPollsController = async (req: Request, res: Response) => {
+	try {
+		const pollsList = await db.select().from(polls);
+
+		res.status(200).send(pollsList);
+	} catch (err) {
+		console.error(err);
+
+		res.status(400).send(err);
+
+		return;
+	}
+}
