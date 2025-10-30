@@ -24,12 +24,20 @@ const PollList = () => {
 	}, []);
 
 	return (
-		<div>
-			<ol>
-				{
-					polls.map(poll => <li key={poll.id}>{poll.query}</li>)
-				}
-			</ol>
+		<div
+			className="">
+			{
+				polls.map(poll => (
+					<div
+						className="rounded shadow-lg p-4" 
+						key={poll.id}>
+						<h3
+							className="font-bold text-xl mb-2">
+								{poll.query}
+						</h3>
+					</div>
+				))
+			}
 		</div>
 	)
 }
