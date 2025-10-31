@@ -44,7 +44,7 @@ const UpdatePollForm = () => {
 						className="block w-full p-2.5 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
 						id="pollIdInput"
 						name="id"
-						placeholder="Poll Query"
+						placeholder="Poll ID"
 						type="text" 
 						required
 						/>
