@@ -35,6 +35,10 @@ const PollList = () => {
 							className="font-bold text-xl mb-2">
 								{poll.query}
 						</h3>
+
+						<button className="mr-3 px-4 py-2 rounded bg-amber-400 text-stone-900 font-semibold hover:bg-amber-500">Edit</button>
+
+						<button className="mr-3 px-4 py-2 rounded bg-red-600 text-zinc-100 font-semibold hover:bg-red-700">Delete</button>
 					</div>
 				))
 			}
