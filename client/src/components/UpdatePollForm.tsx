@@ -31,6 +31,7 @@ const UpdatePollForm = () => {
 	return (
 		<>
 			<form
+				className='shadow-md p-4 mx-4 flex-col bg-white'
 				onSubmit={handleSubmit}>
 				<div 
 					className="mb-5">
