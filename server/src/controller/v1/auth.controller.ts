@@ -1,5 +1,6 @@
 import { type Request, type Response } from "express";
 import { genSalt, hash, compare } from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { db } from "../../db/drizzle";
 import { users } from "../../db/schema";
 import { eq } from "drizzle-orm";
@@ -50,11 +51,33 @@ export const loginUserController = async (req: Request, res: Response) => {
 				eq(users.username, username)
 			);
 
+		if (user.length == 0) {
+			throw new Error("incorrect username or password");
+		}
+
 		const matchingPass = await compare(password, user[0].hash_password);
 
 		if (!matchingPass) {
-			throw new Error("Password is incorrect");
+			throw new Error("incorrect username or password");
 		}
+
+		const jwtToken = jwt.sign(
+			{"iss": user[0].id},
+			process.env.JWT_SECRET,
+			{expiresIn: "1h",},
+			(err, token) => {
+				throw new Error(err?.message);
+			}
+		);
+	
+		res.cookie(
+			"jwt",
+			jwtToken,
+			{
+				maxAge: 3600,
+				httpOnly: true,
+			}
+		);
 
 		res.status(200).send("User has been logged in");
 	} catch (err) {
