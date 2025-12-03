@@ -3,6 +3,7 @@ import { useState } from 'react'
 import NewPollForm from './components/NewPollForm'
 import PollList from './components/PollList'
 import PopUp from './components/PopUp';
+import RegisterForm from './components/RegisterForm';
 
 function App() {
 	const [ showNewPollPopUp, setShowNewPopUp ] = useState<boolean>(false);
@@ -22,6 +23,10 @@ function App() {
 				onClick={openNewPollForm}>
 				<span>New Poll</span>
 			</button>
+
+			<div>
+				<RegisterForm />
+			</div>
 
 			<section>
 				<PollList />
