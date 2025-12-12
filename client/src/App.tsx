@@ -4,6 +4,7 @@ import NewPollForm from './components/NewPollForm'
 import PollList from './components/PollList'
 import PopUp from './components/PopUp';
 import RegisterForm from './components/RegisterForm';
+import Nav from './components/Nav';
 
 function App() {
 	const [ showNewPollPopUp, setShowNewPopUp ] = useState<boolean>(false);
@@ -18,6 +19,8 @@ function App() {
 
 	return (
 		<>
+			<Nav />
+
 			<button
 				className="mr-3 px-4 py-2 bg-blue-600 rounded text-zinc-100 font-semibold hover:bg-blue-700"
 				onClick={openNewPollForm}>
