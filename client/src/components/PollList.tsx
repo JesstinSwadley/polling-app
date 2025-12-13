@@ -13,6 +13,7 @@ type Poll = {
 
 const PollList = () => {
 	const [polls, setPolls] = useState<Poll[]>([]);
+	const [poll, setPollId] = useState<number>(0);
 	const [showEditPopup, setShowEditPopup] = useState<boolean>(false);
 	const [showDeletePopup, setShowDeletePopup] = useState<boolean>(false);
 
@@ -28,7 +29,8 @@ const PollList = () => {
 		fetchPolls();
 	}, []);
 
-	const openEditForm = () => {
+	const openEditForm = (poll: number) => {
+		setPollId(poll);
 		setShowEditPopup(true)
 	}
 
@@ -59,7 +61,7 @@ const PollList = () => {
 
 						<button 
 							className="mr-3 px-4 py-2 rounded bg-amber-400 text-stone-900 font-semibold hover:bg-amber-500"
-							onClick={openEditForm}>
+							onClick={() => openEditForm(poll.id)}>
 								<span>Edit</span>
 						</button>
 
@@ -75,7 +77,8 @@ const PollList = () => {
 			<PopUp
 				showPopup={showEditPopup}
 				onClose={closeEditPopUp}>
-					<UpdatePollForm />
+					<UpdatePollForm 
+						pollId={poll}/>
 			</PopUp>
 
 			<PopUp
