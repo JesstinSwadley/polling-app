@@ -3,7 +3,13 @@ import { type FormEvent } from 'react'
 // Assign Backend API URL to variable
 const API_URL = import.meta.env.VITE_API_URL
 
-const DeletePollForm = () => {
+type poll = {
+	pollId: number
+}
+
+const DeletePollForm = ({ pollId }: poll) => {
+	console.log(pollId);
+
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 

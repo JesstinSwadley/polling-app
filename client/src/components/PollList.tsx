@@ -31,11 +31,12 @@ const PollList = () => {
 
 	const openEditForm = (poll: number) => {
 		setPollId(poll);
-		setShowEditPopup(true)
+		setShowEditPopup(true);
 	}
 
-	const openDeleteForm = () => {
-		setShowDeletePopup(true)
+	const openDeleteForm = (poll: number) => {
+		setPollId(poll);
+		setShowDeletePopup(true);
 	}
 
 	const closeEditPopUp = () => {
@@ -67,7 +68,7 @@ const PollList = () => {
 
 						<button 
 							className="mr-3 px-4 py-2 rounded bg-red-600 text-zinc-100 font-semibold hover:bg-red-700"
-							onClick={openDeleteForm}>
+							onClick={() => openDeleteForm(poll.id)}>
 								<span>Delete</span>
 						</button>
 					</div>
@@ -84,7 +85,8 @@ const PollList = () => {
 			<PopUp
 				showPopup={showDeletePopup}
 				onClose={closeDeletePopUp}>
-					<DeletePollForm />
+					<DeletePollForm 
+						pollId={poll}/>
 			</PopUp>
 		</div>
 	)
