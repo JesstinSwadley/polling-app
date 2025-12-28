@@ -1,45 +1,21 @@
-import { useState } from 'react'
-
-import NewPollForm from './components/NewPollForm'
-import PollList from './components/PollList'
-import PopUp from './components/PopUp';
-import RegisterForm from './components/RegisterForm';
+import { BrowserRouter, Route, Routes } from 'react-router';
+import Home from './pages/Home';
 import Nav from './components/Nav';
 
 function App() {
-	const [ showNewPollPopUp, setShowNewPopUp ] = useState<boolean>(false);
-
-	const openNewPollForm = () => {
-		setShowNewPopUp(true);
-	}
-
-	const closeNewPollForm = () => {
-		setShowNewPopUp(false);
-	}
-
 	return (
 		<>
-			<Nav />
+			<BrowserRouter>
+				<Nav />
 
-			<button
-				className="mr-3 px-4 py-2 bg-blue-600 rounded text-zinc-100 font-semibold hover:bg-blue-700"
-				onClick={openNewPollForm}>
-				<span>New Poll</span>
-			</button>
-
-			<div>
-				<RegisterForm />
-			</div>
-
-			<section>
-				<PollList />
-			</section>
-
-			<PopUp
-				showPopup={showNewPollPopUp}
-				onClose={closeNewPollForm}>
-				<NewPollForm />
-			</PopUp>
+				<main>
+					<Routes>
+						<Route
+							path='/'
+							Component={Home} />
+					</Routes>
+				</main>
+			</BrowserRouter>
 		</>
 	)
 }
