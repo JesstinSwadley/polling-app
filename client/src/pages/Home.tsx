@@ -27,9 +27,9 @@ const Home = () => {
 				<RegisterForm />
 			</div>
 
-			<section>
+			{/* <section>
 				<PollList />
-			</section>
+			</section> */}
 
 			<PopUp
 				showPopup={showNewPollPopUp}
