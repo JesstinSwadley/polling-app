@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import NewPollForm from '../components/NewPollForm'
-import PollList from '../components/PollList'
+// import PollList from '../components/PollList'
 import PopUp from '../components/PopUp';
 import RegisterForm from '../components/RegisterForm';
 const Home = () => {
@@ -17,19 +17,55 @@ const Home = () => {
 
 	return (
 		<>
-			<button
+			{/* <button
 				className="mr-3 px-4 py-2 bg-blue-600 rounded text-zinc-100 font-semibold hover:bg-blue-700"
 				onClick={openNewPollForm}>
 				<span>New Poll</span>
-			</button>
+			</button> */}
 
-			<div>
+			{/* <div>
 				<RegisterForm />
-			</div>
+			</div> */}
 
 			{/* <section>
 				<PollList />
 			</section> */}
+
+			<div className="flex flex-col m-4">
+				<div className="flex flex-row jusify-around">
+					<div className="w-1/4 shadow-lg">
+						<div className="m-3">
+							<h3 className="font-bold text-xl">
+								<span>Poll Title</span>
+							</h3>
+						</div>
+					</div>
+
+					<div className="w-1/4 shadow-lg">
+						<div className="m-3">
+							<h3 className="font-bold text-xl">
+								<span>Poll Title</span>
+							</h3>
+						</div>
+					</div>
+
+					<div className="w-1/4 shadow-lg">
+						<div className="m-3">
+							<h3 className="font-bold text-xl">
+								<span>Poll Title</span>
+							</h3>
+						</div>
+					</div>
+
+					<div className="w-1/4 shadow-lg">
+						<div className="m-3">
+							<h3 className="font-bold text-xl">
+								<span>Poll Title</span>
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<PopUp
 				showPopup={showNewPollPopUp}
