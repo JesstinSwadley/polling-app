@@ -4,6 +4,7 @@ import NewPollForm from '../components/NewPollForm'
 // import PollList from '../components/PollList'
 import PopUp from '../components/PopUp';
 import RegisterForm from '../components/RegisterForm';
+import PollCard from '../components/PollCard';
 const Home = () => {
 	const [ showNewPollPopUp, setShowNewPopUp ] = useState<boolean>(false);
 
@@ -33,37 +34,13 @@ const Home = () => {
 
 			<div className="flex flex-col m-4">
 				<div className="flex flex-row jusify-around">
-					<div className="w-1/4 shadow-lg">
-						<div className="m-3">
-							<h3 className="font-bold text-xl">
-								<span>Poll Title</span>
-							</h3>
-						</div>
-					</div>
+					<PollCard query='Poll Title' />
 
-					<div className="w-1/4 shadow-lg">
-						<div className="m-3">
-							<h3 className="font-bold text-xl">
-								<span>Poll Title</span>
-							</h3>
-						</div>
-					</div>
+					<PollCard query='Poll Title 2' />
 
-					<div className="w-1/4 shadow-lg">
-						<div className="m-3">
-							<h3 className="font-bold text-xl">
-								<span>Poll Title</span>
-							</h3>
-						</div>
-					</div>
+					<PollCard query='Poll Title 3' />
 
-					<div className="w-1/4 shadow-lg">
-						<div className="m-3">
-							<h3 className="font-bold text-xl">
-								<span>Poll Title</span>
-							</h3>
-						</div>
-					</div>
+					<PollCard query='Poll Title 4' />
 				</div>
 			</div>
 
