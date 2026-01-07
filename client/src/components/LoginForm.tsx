@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 // Assign Backend API URL to variable
 const API_URL = import.meta.env.VITE_API_URL
@@ -29,39 +30,42 @@ const LoginForm = () => {
 	return (
 		<>
 			<form
-				className="shadow-md p-4 mx-4 flex-col bg-white rounded"
+				className="flex flex-col gap-6"
 				onSubmit={handleSubmit}>
-				<div>
-					<label
-						className="block mb-2 text-sm text-slate-500"
-						htmlFor="usernameInput">
-						<span>Username</span>
-					</label>
 					<input
-						className="block w-full p-2 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
-						id="usernameInput"
-						name="username"
+						name="email"
 						type="text"
-						required />
-				</div>
-				<div>
-					<label
-						className="block mb-2 text-sm text-slate-500"
-						htmlFor="passwordInput">
-						<span>Password</span>
-					</label>
+						className="w-full py-3 px-4 rounded-md bg-gray-100 text-lg font-semibold placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						placeholder="Email"
+						/>
+
 					<input
-						className="block w-full p-2 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
-						id="passwordInput"
 						name="password"
 						type="password"
-						required />
-				</div>
-				<button
-					className="mb-3 p-2 bg-blue-500 text-white rounded cursor-pointer"
-					type="submit">
-					<span>Login</span>
-				</button>
+						className="w-full py-3 px-4 rounded-md bg-gray-100 text-lg font-semibold placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						placeholder="Password"
+						/>
+
+					<button
+						type="submit"
+						className="w-full py-3 rounded-lg bg-blue-600 text-lg font-bold text-white hover:bg-blue-700 transition-colors">
+							Login
+					</button>
+
+					<hr 
+						className="border-black/80"/>
+
+					<Link
+						className="text-center text-base font-semibold text-black hover:underline"
+						to="#">
+							Forgot Password?
+					</Link>
+
+					<Link
+						className="text-center text-base font-semibold text-black hover:underline"
+						to="#">
+							Need to register?
+					</Link>
 			</form>
 		</>
 	)
