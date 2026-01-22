@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-import NewPollForm from '../components/NewPollForm'
+import NewPollForm from '../components/polls/NewPollForm'
 // import PollList from '../components/PollList'
 import PopUp from '../components/PopUp';
-import RegisterForm from '../components/RegisterForm';
-import PollCard from '../components/PollCard';
+import RegisterForm from '../components/auth/RegisterForm';
+import PollCard from '../components/polls/PollCard';
 const Home = () => {
 	const [ showNewPollPopUp, setShowNewPopUp ] = useState<boolean>(false);
 

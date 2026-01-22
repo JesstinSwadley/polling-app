@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import PopUp from "./PopUp";
-import UpdatePollForm from "./UpdatePollForm";
-import DeletePollForm from "./DeletePollForm";
+import PopUp from "../PopUp";
+import UpdatePollForm from "./forms/UpdatePollForm";
+import DeletePollForm from "./forms/DeletePollForm";
 
 // Assign Backend API URL to variable
 const API_URL = import.meta.env.VITE_API_URL
