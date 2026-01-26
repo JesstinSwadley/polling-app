@@ -8,7 +8,9 @@
     "start": "node dist/app.js",
     "db:generate": "drizzle-kit generate --config=./src/drizzle.config.ts",
     "db:migrate": "drizzle-kit migrate --config=./src/drizzle.config.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui"
   },
   "repository": {
     "type": "git",
@@ -35,8 +37,11 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.6.2",
     "@types/pg": "^8.15.5",
+    "@types/supertest": "^6.0.3",
     "drizzle-kit": "^0.31.5",
+    "supertest": "^7.2.2",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }
