@@ -63,7 +63,7 @@ const LoginForm = () => {
 
 					<Link
 						className="text-center text-base font-semibold text-black hover:underline"
-						to="#">
+						to="/register">
 							Need to register?
 					</Link>
 			</form>
