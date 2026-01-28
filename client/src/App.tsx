@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import Home from './pages/Home';
-import Nav from './components/Nav';
+import Nav from './components/layouts/Nav';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import ForgotPassword from './pages/auth/ForgotPassword';
 
 function App() {
 	return (
@@ -23,6 +24,10 @@ function App() {
 						<Route
 							path='/register'
 							Component={Register} />
+
+						<Route
+							path='/forgot-password'
+							Component={ForgotPassword} />
 					</Routes>
 				</main>
 			</BrowserRouter>
