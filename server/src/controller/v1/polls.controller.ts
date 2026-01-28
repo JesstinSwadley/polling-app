@@ -22,11 +22,15 @@ export const newPollController = async (req: Request, res: Response) => {
 
 		console.log(pollId);
 
-		res.status(201).send("Poll was created");
-	} catch (err) {
+		res.status(201).json({
+			message: "Poll was created"
+		});
+	} catch (err: any) {
 		console.error(err);
 
-		res.status(400).send(err);
+		res.status(400).send({
+			error: err.message
+		});
 
 		return;
 	}
