@@ -1,5 +1,7 @@
+import FormInput from "../ui/FormInput";
+
 // Assign Backend API URL to variable
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL;
 
 const NewPollForm = () => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,23 +31,14 @@ const NewPollForm = () => {
 				className='shadow-md p-4 mx-4 flex-col bg-white'
 				onSubmit={handleSubmit}
 				>
-				<div 
-					className="mb-5">
-					<label
-						className="block mb-2 text-sm"
-						htmlFor="pollQueryInput">
-							<span>Poll Query</span>
-					</label>
-					
-					<input
-						className="block w-full p-2.5 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
-						id="pollQueryInput"
-						name="pollQueryInput"
-						placeholder="Poll Query"
-						type="text" 
-						required
-						/>
-				</div>
+
+				<FormInput 
+					label="Poll Query"
+					name="pollQueryInput"
+					placeholder="Poll Query"
+					type="text"
+					required
+				/>
 
 				<button
 					className="mb-3 p-2 bg-blue-500 text-white rounded cursor-pointer"
@@ -57,4 +50,4 @@ const NewPollForm = () => {
 	)
 }
 
-export default NewPollForm
+export default NewPollForm;
