@@ -1,7 +1,8 @@
-import { type FormEvent } from "react"
+import { type FormEvent } from "react";
+import FormInput from "../../ui/FormInput";
 
 // Assign Backend API URL to variable
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL;
 
 type poll = {
 	pollId: number
@@ -39,41 +40,21 @@ const UpdatePollForm = ({ pollId }: poll) => {
 			<form
 				className='shadow-md p-4 mx-4 flex-col bg-white'
 				onSubmit={handleSubmit}>
-				<div 
-					className="mb-5">
-					<label
-						className="block mb-2 text-sm"
-						htmlFor="pollIdInput">
-							<span>Poll ID</span>
-					</label>
-					
-					<input
-						className="block w-full p-2.5 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
-						id="pollIdInput"
-						name="id"
-						placeholder="Poll ID"
-						type="text" 
-						required
-						/>
-				</div>
+				<FormInput 
+					label="Poll ID"
+					name="pollIdInput"
+					placeholder="Poll ID"
+					type="text"
+					required
+				/>
 
-				<div 
-					className="mb-5">
-					<label
-						className="block mb-2 text-sm"
-						htmlFor="pollQueryInput">
-							<span>Poll Query</span>
-					</label>
-					
-					<input
-						className="block w-full p-2.5 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
-						id="pollQueryInput"
-						name="pollQuery"
-						placeholder="Poll Query"
-						type="text" 
-						required
-						/>
-				</div>
+				<FormInput 
+					label="Poll Query"
+					name="pollQueryInput"
+					placeholder="Poll Query"
+					type="text"
+					required
+				/>
 
 				<button
 					className="mb-3 p-2 bg-blue-500 text-white rounded cursor-pointer"
@@ -85,4 +66,4 @@ const UpdatePollForm = ({ pollId }: poll) => {
 	)
 }
 
-export default UpdatePollForm
+export default UpdatePollForm;

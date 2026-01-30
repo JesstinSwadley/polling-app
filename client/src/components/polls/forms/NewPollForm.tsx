@@ -1,4 +1,4 @@
-import FormInput from "../ui/FormInput";
+import FormInput from "../../ui/FormInput";
 
 // Assign Backend API URL to variable
 const API_URL = import.meta.env.VITE_API_URL;

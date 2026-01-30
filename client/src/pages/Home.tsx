@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import NewPollForm from '../components/polls/NewPollForm'
+import NewPollForm from '../components/polls/forms/NewPollForm'
 // import PollList from '../components/PollList'
 import PopUp from '../components/PopUp';
 import RegisterForm from '../components/auth/RegisterForm';

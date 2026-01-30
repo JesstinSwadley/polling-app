@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import FormInput from '../ui/FormInput'
 
 // Assign Backend API URL to variable
 const API_URL = import.meta.env.VITE_API_URL
@@ -11,7 +12,7 @@ const LoginForm = () => {
 		const form: HTMLFormElement = e.target as HTMLFormElement;
 		const formData: FormData = new FormData(form);
 
-		const username = formData.get("username");
+		const username = formData.get("email");
 		const password = formData.get("password");
 
 		await fetch(`${API_URL}/v1/auth/login`, {
@@ -32,19 +33,19 @@ const LoginForm = () => {
 			<form
 				className="flex flex-col gap-6"
 				onSubmit={handleSubmit}>
-					<input
-						name="email"
-						type="text"
-						className="w-full py-3 px-4 rounded-md bg-gray-100 text-lg font-semibold placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-						placeholder="Email"
-						/>
+					<FormInput 
+						name='email'
+						type='text'
+						placeholder='Email'
+						required
+					/>
 
-					<input
-						name="password"
-						type="password"
-						className="w-full py-3 px-4 rounded-md bg-gray-100 text-lg font-semibold placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-						placeholder="Password"
-						/>
+					<FormInput 
+						name='password'
+						type='password'
+						placeholder='Password'
+						required
+					/>
 
 					<button
 						type="submit"
@@ -71,4 +72,4 @@ const LoginForm = () => {
 	)
 }
 
-export default LoginForm
+export default LoginForm;
