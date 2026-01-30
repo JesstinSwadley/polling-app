@@ -7,7 +7,7 @@ export const newPollController = async (req: Request, res: Response) => {
 	try {
 		const { pollQuery } = req.body;
 
-		if (!pollQuery || pollQuery == "") {
+		if (typeof pollQuery !== "string" || !pollQuery.trim()) {
 			throw new Error("Missing Data");
 		}
 
@@ -36,17 +36,20 @@ export const newPollController = async (req: Request, res: Response) => {
 	}
 }
 
-export const  getListOfAllPollsController = async (req: Request, res: Response) => {
+export const getListOfAllPollsController = async (req: Request, res: Response) => {
 	try {
-		const pollsList = await db.select().from(polls);
+		const pollsList = await db
+			.select()
+			.from(polls)
+			.orderBy(polls.id);
 
-		res.status(200).send(pollsList);
+		res.status(200).json(pollsList);
 	} catch (err) {
 		console.error(err);
 
-		res.status(400).send(err);
-
-		return;
+		res.status(400).json({
+			error: "Failed to fetch polls",
+		});
 	}
 }
 
