@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router';
+import FormInput from '../ui/FormInput';
 
 // Assign Backend API URL to variable
 const API_URL = import.meta.env.VITE_API_URL
@@ -28,39 +30,44 @@ const RegisterForm = () => {
 	return (
 		<>
 			<form
-				className="shadow-md p-4 mx-4 flex-col bg-white rounded"
+				className="flex flex-col gap-6"
 				onSubmit={handleSubmit}>
-				<div>
-					<label
-						className="block mb-2 text-sm text-slate-500"
-						htmlFor="usernameInput">
-						<span>Username</span>
-					</label>
-					<input
-						className="block w-full p-2 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
-						id="usernameInput"
-						name="username"
-						type="text"
-						required />
-				</div>
-				<div>
-					<label
-						className="block mb-2 text-sm text-slate-500"
-						htmlFor="passwordInput">
-						<span>Password</span>
-					</label>
-					<input
-						className="block w-full p-2 bg-white outline-gray-300 placeholder:text-gray-400 outline-solid rounded-sm"
-						id="passwordInput"
-						name="password"
-						type="password"
-						required />
-				</div>
-				<button
-					className="mb-3 p-2 bg-blue-500 text-white rounded cursor-pointer"
-					type="submit">
-					<span>Register</span>
-				</button>
+				<FormInput 
+					name='username'
+					type='text'
+					placeholder='Username'
+					required
+				/>
+
+				<FormInput 
+					name='password'
+					type='password'
+					placeholder='Password'
+					required
+				/>
+
+				<FormInput 
+					name='confirmPassword'
+					type='password'
+					placeholder='Confirm Pasword'
+					required
+				/>
+
+					<button
+						type="submit"
+						className="w-full py-3 rounded-lg bg-blue-600 text-lg font-bold text-white hover:bg-blue-700 transition-colors">
+							Register
+					</button>
+
+
+				<hr 
+					className="border-black/80"/>
+
+				<Link
+					className="text-center text-base font-semibold text-black hover:underline"
+					to="/login">
+						Already Have An Account?
+				</Link>
 			</form>
 		</>
 	)
