@@ -7,5 +7,5 @@ export const pollRouter: Router = Router();
 // Routes
 pollRouter.post("/new", newPollController);
 pollRouter.get("/list-all", getListOfAllPollsController);
-pollRouter.patch("/update", updatePollController);
+pollRouter.patch("/update/:pollId", updatePollController);
 pollRouter.delete("/delete", deletePollController);

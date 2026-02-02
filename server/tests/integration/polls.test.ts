@@ -1,4 +1,4 @@
-import { beforeEach, afterAll, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, beforeAll } from "vitest";
 import request from "supertest";
 import app from "../../src/app";
 import { db } from "../../src/db/drizzle";
@@ -7,10 +7,6 @@ import { polls } from "../../src/db/schema";
 
 describe('Polls Integration Tests', () => {
 	beforeEach(async () => {
-		await db.delete(polls);
-	});
-
-	afterAll(async () => {
 		await db.delete(polls);
 	});
 
@@ -79,6 +75,68 @@ describe('Polls Integration Tests', () => {
 
 			expect(response.body.length).toBe(2);
 			expect(response.body[0]).toHaveProperty("query");
+		});
+	});
+
+	describe("PATCH /v1/polls/update/:pollId", () => {
+		it("updates an existing poll", async () => {
+			const inserted = await db
+				.insert(polls)
+				.values({
+					query: "Original Question"
+				})
+				.returning({
+					id: polls.id
+				});
+
+			const pollId = inserted[0].id;
+
+			const response = await request(app)
+				.patch(`/v1/polls/update/${pollId}`)
+				.send({
+					pollQuery: "Updated question"
+				})
+				.expect(200);
+
+			expect(response.body).toEqual({
+				message: "Poll has been updated",
+				pollId
+			});
+
+			const result = await db.select().from(polls);
+			expect(result.length).toBe(1);
+			expect(result[0].query).toBe("Updated question");
+		});
+
+		it("returns 400 when pollQuery is missing", async () => {
+			const inserted = await db
+				.insert(polls)
+				.values({
+					query: "Original Question"
+				})
+				.returning({
+					id: polls.id
+				});
+
+			const pollId = inserted[0].id;
+
+			const response = await request(app)
+				.patch(`/v1/polls/update/${pollId}`)
+				.send({})
+				.expect(400);
+
+			expect(response.body.error).toBe("Missing Data");
+		});
+
+		it("returns 404 when poll does not exist", async () => {
+			const response = await request(app)
+				.patch(`/v1/polls/update/999999`)
+				.send({
+					pollQuery: "Does not exist"
+				})
+				.expect(404);
+
+			expect(response.body.error).toBe("Poll not found");
 		});
 	});
 });

@@ -55,13 +55,17 @@ export const getListOfAllPollsController = async (req: Request, res: Response) =
 
 export const updatePollController = async (req: Request, res: Response) => {
 	try {
-		const { pollId, pollQuery } = req.body;
+		const pollId = Number(req.params.pollId);
 
-		if (!pollId || !pollQuery || pollQuery == "") {
-			throw new Error("Missing Data");
+		const { pollQuery } = req.body;
+
+		if (!pollId || !pollQuery || pollQuery.trim() === "") {
+			return res.status(400).json({
+				error: "Missing Data"
+			});
 		}
 
-		await db
+		const updated = await db
 				.update(polls)
 				.set({
 					query: pollQuery
@@ -69,14 +73,26 @@ export const updatePollController = async (req: Request, res: Response) => {
 				.where(
 					eq(polls.id, pollId)
 				)
+				.returning({
+					id: polls.id
+				});
 
-		res.status(200).send("Poll has been updated");
+		if (updated.length === 0) {
+			return res.status(404).json({
+				error: "Poll not found"
+			});
+		}
+		
+		res.status(200).json({
+			message: "Poll has been updated",
+			pollId
+		});
 	} catch (err) {
 		console.error(err);
 
-		res.status(400).send(err);
-
-		return;
+		res.status(500).json({
+			error: "Internal Server Error"
+		});
 	}
 }
 
