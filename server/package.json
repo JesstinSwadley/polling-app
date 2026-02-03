@@ -1,6 +1,6 @@
 {
   "name": "pern-polling-app",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "A simple polling app that allows users to create, manage and participate in polls",
   "main": "app.ts",
   "scripts": {
