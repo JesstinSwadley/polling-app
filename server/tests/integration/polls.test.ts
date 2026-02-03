@@ -139,4 +139,51 @@ describe('Polls Integration Tests', () => {
 			expect(response.body.error).toBe("Poll not found");
 		});
 	});
+
+	describe("DELETE /v1/polls/delete", () => {
+		it("should delete an existing poll and return 200", async () => {
+			const inserted = await db
+				.insert(polls)
+				.values({
+					query: "Original Question"
+				})
+				.returning({
+					id: polls.id
+				});
+
+			const pollId = inserted[0].id;
+
+			const response = await request(app)
+				.delete("/v1/polls/delete")
+				.send({ 
+					pollId: pollId
+				})
+				.expect(200);
+
+			expect(response.body).toEqual({
+				message: "Poll has been deleted",
+			});
+
+			const remainingPolls = await db.select().from(polls);
+			expect(remainingPolls.length).toBe(0);
+		});
+
+		it("should return 400 when pollId is missing", async () => {
+			const response = await request(app)
+				.delete("/v1/polls/delete")
+				.send({})
+				.expect(400);
+
+			expect(response.body.error).toBe("Missing Data");
+		});
+
+		it("should return 404 when poll does not exist", async () => {
+			const response = await request(app)
+				.delete("/v1/polls/delete")
+				.send({ pollId: 9999 })
+				.expect(404);
+
+			expect(response.body.error).toBe("Poll not found");
+		});
+	});
 });

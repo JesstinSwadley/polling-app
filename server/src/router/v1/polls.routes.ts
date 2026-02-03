@@ -8,4 +8,4 @@ export const pollRouter: Router = Router();
 pollRouter.post("/new", newPollController);
 pollRouter.get("/list-all", getListOfAllPollsController);
 pollRouter.patch("/update/:pollId", updatePollController);
-pollRouter.delete("/delete", deletePollController);
+pollRouter.delete("/delete/:pollId", deletePollController);
