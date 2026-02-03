@@ -140,7 +140,7 @@ describe('Polls Integration Tests', () => {
 		});
 	});
 
-	describe("DELETE /v1/polls/delete", () => {
+	describe("DELETE /v1/polls/delete/:pollId", () => {
 		it("should delete an existing poll and return 200", async () => {
 			const inserted = await db
 				.insert(polls)
@@ -154,10 +154,7 @@ describe('Polls Integration Tests', () => {
 			const pollId = inserted[0].id;
 
 			const response = await request(app)
-				.delete("/v1/polls/delete")
-				.send({ 
-					pollId: pollId
-				})
+				.delete(`/v1/polls/delete/${pollId}`)
 				.expect(200);
 
 			expect(response.body).toEqual({
@@ -170,8 +167,7 @@ describe('Polls Integration Tests', () => {
 
 		it("should return 400 when pollId is missing", async () => {
 			const response = await request(app)
-				.delete("/v1/polls/delete")
-				.send({})
+				.delete(`/v1/polls/delete/0`)
 				.expect(400);
 
 			expect(response.body.error).toBe("Missing Data");
@@ -179,8 +175,7 @@ describe('Polls Integration Tests', () => {
 
 		it("should return 404 when poll does not exist", async () => {
 			const response = await request(app)
-				.delete("/v1/polls/delete")
-				.send({ pollId: 9999 })
+				.delete(`/v1/polls/delete/9999`)
 				.expect(404);
 
 			expect(response.body.error).toBe("Poll not found");
