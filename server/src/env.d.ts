@@ -8,6 +8,7 @@ declare global {
 			DB_PASSWORD: string;
 			DB_DATABASE: string;
 			JWT_SECRET: string;
+			NODE_ENV: string;
 		}
 	}
 }

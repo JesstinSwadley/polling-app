@@ -1,6 +1,7 @@
 {
   "name": "pern-polling-app",
   "version": "0.7.4",
+  "type": "module",
   "description": "A simple polling app that allows users to create, manage and participate in polls",
   "main": "app.ts",
   "scripts": {
@@ -8,6 +9,7 @@
     "start": "node dist/server.js",
     "db:generate": "drizzle-kit generate --config=./src/drizzle.config.ts",
     "db:migrate": "drizzle-kit migrate --config=./src/drizzle.config.ts",
+    "db:migrate:prod": "node dist/db/migrate.js",
     "test": "vitest",
     "test:run": "vitest run",
     "test:ui": "vitest --ui"

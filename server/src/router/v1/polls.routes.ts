@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { deletePollController, getListOfAllPollsController, newPollController, updatePollController } from "../../controller/v1/polls.controller";
+import { deletePollController, getListOfAllPollsController, newPollController, updatePollController } from "../../controller/v1/polls.controller.js";
 
 // Router
 export const pollRouter: Router = Router();

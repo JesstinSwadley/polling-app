@@ -1,6 +1,6 @@
 import { type Request, type Response } from "express";
-import { db } from "../../db/drizzle";
-import { polls } from "../../db/schema";
+import { db } from "../../db/drizzle.js";
+import { polls } from "../../db/schema.js";
 import { eq } from "drizzle-orm";
 
 export const newPollController = async (req: Request, res: Response) => {

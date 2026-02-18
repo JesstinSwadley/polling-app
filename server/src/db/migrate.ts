@@ -1,37 +1,34 @@
-import { drizzle } from "drizzle-orm/node-postgres";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
-import { Pool } from "pg";
+import { db, pool } from "./drizzle.js"; 
+import path from "path";
+import { fileURLToPath } from "url";
 
-const host 		= process.env.DB_HOST;
-const port 		= process.env.DB_PORT;
-const user 		= process.env.DB_USER;
-const password 	= process.env.DB_PASSWORD;
-const database 	= process.env.DB_DATABASE;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const sql: Pool = new Pool({
-	host,
-	port,
-	user,
-	password,
-	database,
-	ssl: {
-		rejectUnauthorized: false
-	}
-});
-
-const db = drizzle(sql);
-
-const main = async () => {
-	try {
-		await migrate(db, {
-			migrationsFolder: "src/db/migrations"
-		});
-
-		console.log("Migration successful");
-	} catch (err) {
-		console.log(err);
-		process.exit(1);
-	}
+export const runMigrations = async () => {
+    console.log("Running migrations...");
+    try {
+        await migrate(db, {
+            migrationsFolder: path.resolve(__dirname, "migrations")
+        });
+        console.log("Migrations complete");
+    } catch (err) {
+        console.error("Migration failed:", err);
+        throw err;
+    }
 };
 
-main();
+const isDirectRun = import.meta.url === `file://${process.argv[1]}`;
+
+if (isDirectRun) {
+    runMigrations()
+        .then(async () => {
+            await pool.end();
+            process.exit(0);
+        })
+        .catch(async () => {
+            await pool.end();
+            process.exit(1);
+        });
+}
