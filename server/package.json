@@ -12,6 +12,8 @@
     "db:migrate:prod": "node dist/db/migrate.js",
     "test": "vitest",
     "test:run": "vitest run",
+    "test:unit": "vitest run .unit.",
+    "test:int": "vitest run .int.",
     "test:ui": "vitest --ui"
   },
   "repository": {
