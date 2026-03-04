@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import { PollService } from "../../services/v1/polls.services.js";
+import { PollService } from "../../services/v1/polls.service.js";
 
 export const newPollController = async (req: Request, res: Response) => {
 	try {
