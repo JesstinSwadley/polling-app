@@ -84,4 +84,50 @@ describe("PollService Unit Tests", () => {
 			await expect(PollService.listAll()).rejects.toThrow("Connection Timeout");
 		});
 	});
+
+	describe("update poll service", () => {
+		it("should return the poll id when update is successful", async () => {
+			const mockId = 1;
+			const mockQuery = "Updated Poll Title";
+
+			const mockReturning = vi.fn().mockResolvedValue([{ id: mockId }]);
+			const mockWhere = vi.fn().mockReturnValue({ returning: mockReturning });
+			const mockSet = vi.fn().mockReturnValue({ where: mockWhere });
+			
+			vi.mocked(db.update).mockReturnValue({ set: mockSet } as any);
+
+			const result = await PollService.update(mockId, mockQuery);
+
+			expect(result).toBe(mockId);
+			expect(db.update).toHaveBeenCalledWith(polls);
+			expect(mockSet).toHaveBeenCalledWith({ query: mockQuery });
+			expect(mockWhere).toHaveBeenCalled();
+		});
+
+		it("should return null if the poll to update does not exist", async () => {
+			const mockId = 999;
+
+			const mockReturning = vi.fn().mockResolvedValue([]); 
+			const mockWhere = vi.fn().mockReturnValue({ returning: mockReturning });
+			const mockSet = vi.fn().mockReturnValue({ where: mockWhere });
+
+			vi.mocked(db.update).mockReturnValue({ set: mockSet } as any);
+
+			const result = await PollService.update(mockId, "Some Query");
+
+			expect(result).toBeNull();
+		});
+
+		it("should throw an error if the database update fails", async () => {
+			const mockError = new Error("Unique constraint violation");
+			
+			vi.mocked(db.update).mockImplementation(() => {
+				throw mockError;
+			});
+
+			await expect(
+				PollService.update(1, "Faulty update")
+			).rejects.toThrow("Unique constraint violation");
+		});
+	});
 });
