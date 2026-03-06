@@ -130,4 +130,48 @@ describe("PollService Unit Tests", () => {
 			).rejects.toThrow("Unique constraint violation");
 		});
 	});
+
+	describe("delete poll service", () => {
+		it("should return true when a poll is successfully deleted", async () => {
+			const mockId = 5;
+
+			const mockReturning = vi.fn().mockResolvedValue([{ id: mockId }]);
+			const mockWhere = vi.fn().mockReturnValue({ returning: mockReturning });
+			
+			vi.mocked(db.delete).mockReturnValue({ where: mockWhere } as any);
+
+			const result = await PollService.delete(mockId);
+
+			expect(result).toBe(true);
+			expect(db.delete).toHaveBeenCalledWith(polls);
+			expect(mockWhere).toHaveBeenCalled();
+		});
+
+		it("should return false if the poll to delete does not exist", async () => {
+			const mockId = 999;
+
+			const mockReturning = vi.fn().mockResolvedValue([]);
+			const mockWhere = vi.fn().mockReturnValue({ returning: mockReturning });
+
+			vi.mocked(db.delete).mockReturnValue({ where: mockWhere } as any);
+
+			const result = await PollService.delete(mockId);
+
+			expect(result).toBe(false);
+		});
+
+		it("should throw an error if the database delete operation fails", async () => {
+			const mockError = new Error("Foreign key constraint violation");
+
+			vi.mocked(db.delete).mockReturnValue({
+				where: vi.fn().mockReturnValue({
+					returning: vi.fn().mockRejectedValue(mockError)
+				})
+			} as any);
+
+			await expect(
+				PollService.delete(1)
+			).rejects.toThrow("Foreign key constraint violation");
+		});
+	});
 });
