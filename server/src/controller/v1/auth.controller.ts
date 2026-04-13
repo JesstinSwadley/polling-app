@@ -1,8 +1,8 @@
 import { type Request, type Response } from "express";
 import { genSalt, hash, compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { db } from "../../db/drizzle";
-import { users } from "../../db/schema";
+import { db } from "../../db/drizzle.js";
+import { users } from "../../db/schema.js";
 import { eq } from "drizzle-orm";
 
 export const registerUserController = async (req: Request, res: Response) => {
