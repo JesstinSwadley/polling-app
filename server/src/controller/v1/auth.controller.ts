@@ -4,35 +4,46 @@ import jwt from "jsonwebtoken";
 import { db } from "../../db/drizzle.js";
 import { users } from "../../db/schema.js";
 import { eq } from "drizzle-orm";
+import { RegisterSchema } from "../../schemas/v1/auth.schema.js";
+import { AuthService } from "../../services/v1/auth.service.js";
 
 export const registerUserController = async (req: Request, res: Response) => {
 	try {
-		const { username, password } = req.body;
+		// const { username, password } = req.body;
 
-		if (!username || !password) {
-			throw new Error("Missing Data");
-		}
+		// if (!username || !password) {
+		// 	throw new Error("Missing Data");
+		// }
 
-		const salt: string = await genSalt(10);
-		const hash_password: string = await hash(password, salt);
+		// const salt: string = await genSalt(10);
+		// const hash_password: string = await hash(password, salt);
 
-		const user = await db
-			.insert(users)
-			.values({
-				username,
-				hash_password
-			})
-			.returning({
-				id: users.id
-			});
+		// const user = await db
+		// 	.insert(users)
+		// 	.values({
+		// 		username,
+		// 		hash_password
+		// 	})
+		// 	.returning({
+		// 		id: users.id
+		// 	});
 
-		res.status(201).send(`User has been registered`);
-	} catch (err) {
+		// res.status(201).send(`User has been registered`);
+
+		const validateData = RegisterSchema.parse(req.body);
+
+		const user = await AuthService.register(validateData);
+
+		res.status(201).json({
+			message: "User registered",
+			user
+		});
+	} catch (err: any) {
 		console.error(err);
 
-		res.status(400).send(err);
-
-		return;
+		res.status(400).json({
+			error: err.message
+		});
 	}
 }
 
